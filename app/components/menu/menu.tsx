@@ -15,7 +15,7 @@ export const Menu = ()=> {
     };
 
     useLayoutEffect(() => {
-        if(pathname == PageConfig.tarif) {
+        if(pathname == PageConfig.tarif || pathname == PageConfig.error) {
         setHide(true)
         } 
         else {

@@ -3,5 +3,6 @@ export const PageConfig = {
     history:'/history',
     tarif:'/tarif',
     info:'/info',
-    analiz:'/analiz'
+    analiz:'/analiz',
+    error:'/error'
 }
