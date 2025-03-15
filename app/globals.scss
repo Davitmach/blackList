@@ -17,23 +17,3 @@ justify-content: space-between; */
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
-* {
-  &::-webkit-scrollbar {
-    width: 5px; /* Ширина скроллбара */
-  }
-  
-  &::-webkit-scrollbar-thumb {
-    background-color: #162C00; /* Цвет ползунка */
-    border-radius: 6px; /* Скругление углов */
-  }
-  
-  &::-webkit-scrollbar-track {
-    background-color: #E8FE74; /* Цвет дорожки */
-  }
-  
-  /* Для Firefox */
-  * {
-    scrollbar-width: thin; /* Тонкий скроллбар */
-    scrollbar-color: #162C00; /* Цвет ползунка и дорожки */
-  }
-}

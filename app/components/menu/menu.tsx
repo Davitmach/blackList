@@ -26,6 +26,7 @@ export const Menu = ()=> {
     if(hide == false) {
     return(
         <div className={` fixed bottom-0 left-[50%] translate-x-[-50%] Menu_container w-full max-w-[500px] mx-auto flex justify-between bg-[#00000080] rounded-t-[20px] p-[20px]`}>
+          
             <div onClick={()=>HandleChangePage(PageConfig.home)} className={`${activePage === '/' ? 'Active' :''} flex flex-col items-center justify-center gap-[8px] cursor-pointer group`}>
                 <div>
                 <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
