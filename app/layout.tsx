@@ -34,7 +34,7 @@ export default function RootLayout({
       <body
         className={`${roboto.className}  antialiased`}
       >
-        <Header/>
+        {/* <Header/> */}
         {children}
         <Menu/>
       </body>

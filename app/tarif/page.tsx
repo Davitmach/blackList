@@ -326,6 +326,7 @@ const tarifsPrices: Record<Tarifs, TarifInfo> = {
 export default function Tarif() {
     const [activeTarif, setActiveTarif] = useState<TarifInfo>(tarifsPrices['Пробный']);
     const [translate,setTranslate] = useState<number>(0);
+const ref = useRef<HTMLDivElement>(null);
 
     const changeTarif = (tarif: Tarifs) => {
         setActiveTarif(tarifsPrices[tarif]);
@@ -367,15 +368,24 @@ return () => document.removeEventListener('keydown',HandlePress)
 
     useEffect(() => {
         if (!isTouchDevice) {
-            // Ensure that active tariff is always on the left side
-            const itemWidth = 120;  // Width of each tarif item (adjust if needed)
-            const gap = 20;         // The gap between items (adjust if needed)
+            const itemWidth = 120;  
+            const gap = 20;     
             const offset = -(activeTarifIndex * (itemWidth + gap));
             setTranslate(Math.max(offset,-500));
         }
     }, [activeTarif, isTouchDevice]);
 
-
+    useEffect(() => {
+        if (ref.current) {
+            const itemWidth = 120;
+            const gap = 20;
+            const offset = -(activeTarifIndex * (itemWidth + gap));
+            ref.current.scrollTo({
+                left: Math.max(-offset, -500),
+                behavior: "smooth" // Плавный скролл
+            });
+        }
+    }, [activeTarif, isTouchDevice]);
     return (
         <div className="max-w-[500px] mx-auto ">
             <div className="w-full flex justify-center flex-col items-center gap-[10px] mt-[30px]">
@@ -383,7 +393,7 @@ return () => document.removeEventListener('keydown',HandlePress)
                 <div className="text-[#DDDDDD] font-[500] text-[22px]">{activeTarif.name}</div>
                 <div className="text-[#926C88] font-[300] text-[14px] text-center">{activeTarif.additionalInfo}</div>
             </div>
-           {isTouchDevice == true ?  <div className={`flex gap-[20px] w-full overflow-x-auto px-[20px] mt-[30px] `}>
+           {isTouchDevice == true ?  <div className={`flex gap-[20px] w-full overflow-x-auto px-[20px] mt-[30px] Scroll_Container duration-[.4s] `} ref={ref}>
                  {Object.entries(tarifsPrices).map(([key, tarif]) => (
                     <div onClick={()=> changeTarif(tarif.name)} key={key} className={`${tarif.name == activeTarif.name ? 'Tarif_Active' : 'Tarif_Disable'} cursor-pointer w-[120px] h-[120px]  rounded-[20px] justify-center flex flex-col items-center px-[10px] py-[24.5px] gap-[10px] flex-shrink-0`}>
                         <div className="text-[#DDDDDD] font-[500] text-[14px] ">{tarif.name}</div>
@@ -393,7 +403,7 @@ return () => document.removeEventListener('keydown',HandlePress)
                  )) }
             </div> :
             
-            <div className=' relative mt-[30px] px-[20px] overflow-x-hidden' >
+            <div className=' relative mt-[30px] px-[20px] overflow-x-hidden ' >
 <div style={{transform:`translateX(${translate}px)`}} className={`duration-[.4s] flex gap-[20px]  `}      >
 {Object.entries(tarifsPrices).map(([key, tarif]) => (
                     <div onClick={()=> changeTarif(tarif.name)} key={key} className={`${tarif.name == activeTarif.name ? 'Tarif_Active' : 'Tarif_Disable'} cursor-pointer w-[120px] h-[120px]  rounded-[20px] justify-center flex flex-col items-center px-[10px] py-[24.5px] gap-[10px] flex-shrink-0`}>

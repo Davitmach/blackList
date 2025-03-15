@@ -7,3 +7,11 @@ border: 1px solid #8E237380;
         color: #926C88;
     }
 }
+.Scroll_Container {
+    scrollbar-width: none; /* Для Firefox */
+    -ms-overflow-style: none; /* Для IE и Edge */
+}
+
+.Scroll_Container::-webkit-scrollbar {
+    display: none; /* Для Chrome, Safari и других WebKit-браузеров */
+}
