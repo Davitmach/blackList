@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+
+
+body {
+  background: linear-gradient(175.52deg, #000000 10.13%, #1C0015 94.47%);
+  background-attachment: fixed;
+height: 100vh;
+/* display: flex;
+flex-direction: column;
+justify-content: space-between; */
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+* {
+  &::-webkit-scrollbar {
+    width: 5px; /* Ширина скроллбара */
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: #162C00; /* Цвет ползунка */
+    border-radius: 6px; /* Скругление углов */
+  }
+  
+  &::-webkit-scrollbar-track {
+    background-color: #E8FE74; /* Цвет дорожки */
+  }
+  
+  /* Для Firefox */
+  * {
+    scrollbar-width: thin; /* Тонкий скроллбар */
+    scrollbar-color: #162C00; /* Цвет ползунка и дорожки */
+  }
+}
