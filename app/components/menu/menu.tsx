@@ -1,7 +1,7 @@
 'use client';
 import { usePathname, useRouter } from 'next/navigation';
 import './style.scss'
-import { PageConfig } from '@/app/config/page';
+import { PageConfig } from '@/app/config/pages';
 import { useEffect, useLayoutEffect, useState } from 'react';
 export const Menu = ()=> {
     const pathname = usePathname();
