@@ -1,8 +1,8 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { useEffect, useState,Suspense } from 'react';
 import './style.scss';
 import { useSearchParams } from 'next/navigation';
-export default function Page() {
+function PayPageContent() {
     const searchParams = useSearchParams();
     const [data,setData] = useState<any>();
     const tarifParam = searchParams.get("tarif");
@@ -133,4 +133,11 @@ if(tarif) {
         </div>
        </div>
     )
+}
+export default function Page() {
+    return (
+        <Suspense fallback={<div>Загрузка...</div>}>
+            <PayPageContent />
+        </Suspense>
+    );
 }
