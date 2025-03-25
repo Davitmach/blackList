@@ -1,5 +1,6 @@
 'use client';
 import { useRouter } from "next/navigation"
+import { PageConfig } from "../config/pages";
 
 export default function Info() {
     const { push} = useRouter();
@@ -21,7 +22,7 @@ export default function Info() {
 <div className="text-[#926C88] text-[14px] text-decoration underline cursor-pointer">Служба поддержки</div>
 <div className="text-[#926C88] text-[14px] cursor-pointer">Отмена подписки</div>
 <div className="text-[#926C88] text-[14px] cursor-pointer" onClick={()=> {
-    push('/analiz')
+    push(PageConfig.analiz)
 }}>Как происходит анализ</div>
             </div>
 

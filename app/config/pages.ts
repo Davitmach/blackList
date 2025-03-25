@@ -4,5 +4,8 @@ export const PageConfig = {
     tarif:'/tarif',
     info:'/info',
     analiz:'/analiz',
-    error:'/error'
+    error:'/error',
+    user:'/user',
+    pay:'/pay',
+    prize:'/prize'
 }
