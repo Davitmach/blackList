@@ -287,7 +287,7 @@ const Perepiski = (props: IPerepiski) => {
           </div>
           <div className="text-[#DDDDDD] text-[14px]">Утекшие переписки</div>
         </div>
-        <div className="flex flex-col items-center justify-center aspect-square relative gap-[20px] w-full rounded-b-[10px] overflow-hidden">
+        <div className="flex flex-col items-center justify-center aspect-square relative gap-[20px] w-full rounded-[10px] overflow-hidden">
           <div style={{backgroundImage:"url('/spo.png')"}} className="bg-black -z-[50] img absolute w-full h-full"></div>
           <div className="text-[#DDDDDD] font-[500] text-[16px]">
             Проверить утекшие переписки!
@@ -414,7 +414,7 @@ const Aktivonst = (props:IPerepiski)=> {
               </div>
               <div className="text-[#DDDDDD] text-[14px]">Анализ активности</div>
             </div>
-            <div className="flex flex-col items-center justify-center aspect-square relative gap-[20px] w-full rounded-b-[10px]">
+            <div className="flex flex-col items-center justify-center aspect-square relative gap-[20px] w-full rounded-[10px]">
             <div style={{backgroundImage:"url('/spo.png')"}} className="bg-black -z-[50] img absolute w-full h-full"></div>
               <div className="text-[#DDDDDD] font-[500] text-[16px] text-center max-w-[264px]">
               Активируйте пробный тариф за 14₽, чтобы посмотреть, с кем аккаунт взаимодействует чаще всего!
@@ -511,7 +511,7 @@ const Friends = (props:IPerepiski)=> {
               </div>
               <div className="text-[#DDDDDD] text-[14px]">Анализ активности</div>
             </div>
-            <div className="flex flex-col items-center justify-center aspect-square relative gap-[20px] w-full rounded-b-[10px]">
+            <div className="flex flex-col items-center justify-center aspect-square relative gap-[20px] w-full rounded-[10px]">
             <div style={{backgroundImage:"url('/spo.png')"}} className="bg-black -z-[50] img absolute w-full h-full"></div>
               <div className="text-[#DDDDDD] font-[500] text-[16px] text-center max-w-[264px]">
               Активируйте пробный тариф за 14₽, чтобы посмотреть, с кем аккаунт взаимодействует чаще всего!
@@ -590,7 +590,7 @@ const Likes = (props:IPerepiski)=> {
               </div>
               <div className="text-[#DDDDDD] text-[14px]">Полученные лайки</div>
             </div>
-            <div className="flex flex-col items-center justify-center aspect-square relative gap-[20px] w-full rounded-b-[10px]">
+            <div className="flex flex-col items-center justify-center aspect-square relative gap-[20px] w-full rounded-[10px]">
             <div style={{backgroundImage:"url('/spo.png')"}} className="bg-black -z-[50] img absolute w-full h-full"></div>
               <div className="text-[#DDDDDD] font-[500] text-[16px] text-center max-w-[264px]">
               Активируйте пробный тариф за 14₽, чтобы посмотреть, с кем аккаунт взаимодействует чаще всего!
@@ -650,7 +650,7 @@ const OutLikes = (props:IPerepiski)=> {
               </div>
               <div className="text-[#DDDDDD] text-[14px]">Отправленные лайки</div>
             </div>
-            <div className="flex flex-col items-center justify-center aspect-square relative gap-[20px] w-full rounded-b-[10px]">
+            <div className="flex flex-col items-center justify-center aspect-square relative gap-[20px] w-full rounded-[10px]">
             <div style={{backgroundImage:"url('/spo.png')"}} className="bg-black -z-[50] img absolute w-full h-full"></div>
               <div className="text-[#DDDDDD] font-[500] text-[16px] text-center max-w-[264px]">
               Активируйте пробный тариф за 14₽, чтобы посмотреть, с кем аккаунт взаимодействует чаще всего!
@@ -711,7 +711,7 @@ const Comments = (props:IPerepiski)=> {
               </div>
               <div className="text-[#DDDDDD] text-[14px]">Полученные комментарии</div>
             </div>
-            <div className="flex flex-col items-center justify-center aspect-square relative gap-[20px] w-full rounded-b-[10px]">
+            <div className="flex flex-col items-center justify-center aspect-square relative gap-[20px] w-full rounded-[10px]">
             <div style={{backgroundImage:"url('/spo.png')"}} className="bg-black -z-[50] img absolute w-full h-full"></div>
               <div className="text-[#DDDDDD] font-[500] text-[16px] text-center max-w-[264px]">
               Активируйте пробный тариф за 14₽, чтобы посмотреть, с кем аккаунт взаимодействует чаще всего!
@@ -774,7 +774,7 @@ const OutComments = (props:IPerepiski)=> {
               </div>
               <div className="text-[#DDDDDD] text-[14px]">Отправленные комментарии</div>
             </div>
-            <div className="flex flex-col items-center justify-center aspect-square relative gap-[20px] w-full rounded-b-[10px]">
+            <div className="flex flex-col items-center justify-center aspect-square relative gap-[20px] w-full rounded-[10px]">
             <div style={{backgroundImage:"url('/spo.png')"}} className="bg-black -z-[50] img absolute w-full h-full"></div>
               <div className="text-[#DDDDDD] font-[500] text-[16px] text-center max-w-[264px]">
               Активируйте пробный тариф за 14₽, чтобы посмотреть, с кем аккаунт взаимодействует чаще всего!
@@ -862,7 +862,7 @@ const Groups = (props:IPerepiski)=> {
               </div>
               <div className="text-[#DDDDDD] text-[14px]">Подозрительные группы</div>
             </div>
-            <div className="flex flex-col items-center justify-center aspect-square relative gap-[20px] w-full rounded-b-[10px]">
+            <div className="flex flex-col items-center justify-center aspect-square relative gap-[20px] w-full rounded-[10px]">
             <div style={{backgroundImage:"url('/spo.png')"}} className="bg-black -z-[50] img absolute w-full h-full"></div>
               <div className="text-[#DDDDDD] font-[500] text-[16px] text-center max-w-[264px]">
               Активируйте пробный тариф за 14₽, чтобы посмотреть, с кем аккаунт взаимодействует чаще всего!
@@ -921,7 +921,7 @@ const Result = (props:IPerepiski)=> {
               </div>
               <div className="text-[#DDDDDD] text-[14px]">Результат проверки</div>
             </div>
-            <div className="flex flex-col items-center justify-center aspect-square relative gap-[20px] w-full rounded-b-[10px]">
+            <div className="flex flex-col items-center justify-center aspect-square relative gap-[20px] w-full rounded-[10px]">
             <div style={{backgroundImage:"url('/spo.png')"}} className="bg-black -z-[50] img absolute w-full h-full"></div>
               <div className="text-[#DDDDDD] font-[500] text-[16px] text-center max-w-[264px]">
               Активируйте пробный тариф за 14₽, чтобы посмотреть, с кем аккаунт взаимодействует чаще всего!
@@ -1034,19 +1034,21 @@ const Poslania = (props:IPerepiski)=> {
               <div><p className="text-[12px] text-[#222222] font-[400]">“Я про тебя такое знаю... дай бог, чтобы никто случайно не узнал)”</p></div>
               <div className="absolute right-[10px] bottom-[10px]"><h1>недавно</h1></div>
             </div>
-            <div className="flex flex-col items-center justify-center h-full w-full rounded-b-[10px]">
-            <div style={{backgroundImage:"url('/spo2.png')"}} className="bg-black -z-[50] img absolute w-full h-[184px]"></div>
-          
-            <div>
-              <button onClick={()=> {
-                const tarifData = encodeURIComponent(JSON.stringify(Tarif));
-                push(`/pay?tarif=${tarifData}`);
-              }} className="bg-[#8E2373B2] rounded-[50px] text-[#FFFFFF] text-[16px] py-[10px] px-[40px]">
-              Узнать, кто это
-              </button>
-            </div>
+            <div className="flex flex-col items-center justify-center h-full w-full rounded-[10px] overflow-hidden relative">
+  <div style={{backgroundImage:"url('/spo2.png')"}} className="bg-black -z-[50] absolute w-full h-full"></div>
+  <div>
+    <button
+      onClick={() => {
+        const tarifData = encodeURIComponent(JSON.stringify(Tarif));
+        push(`/pay?tarif=${tarifData}`);
+      }}
+      className="bg-[#8E2373B2] rounded-[50px] text-[#FFFFFF] text-[16px] py-[10px] px-[40px]"
+    >
+      Узнать, кто это
+    </button>
+  </div>
+</div>
 
-            </div>
         
           </div>
         </div>

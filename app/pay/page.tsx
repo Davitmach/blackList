@@ -10,11 +10,9 @@ function PayPageContent() {
     const tarif = tarifParam ? JSON.parse(decodeURIComponent(tarifParam)) : null;
 useEffect(()=> {
 if(tarif) {
-    console.log(tarif);
-    
+    console.log(tarif);   
     setData(tarif)
 }
-
 },[searchParams])
 
     return(
