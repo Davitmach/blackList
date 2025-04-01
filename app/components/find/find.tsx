@@ -2,28 +2,55 @@
 
 import { PageConfig } from "@/app/config/pages";
 import { useRouter } from "next/navigation";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
-export const Find = ()=> {
-    const {push} = useRouter()
+export const Find = () => {
+    const { push } = useRouter();
     const ref = useRef<HTMLInputElement>(null);
-    const HandleFind = ()=> {
-        if(ref.current) {
-            if(ref.current.value !=='' && ref.current.value) {
-                push(PageConfig.user)
-                
+    const [error, setError] = useState<string | null>(null);
+
+    // Регулярное выражение для валидации ссылки на ВКонтакте
+    const validateUrl = (url: string) => {
+        const regex = /^(https?:\/\/)?(www\.)?vk\.com\/id\d+$/;
+        return regex.test(url);
+    };
+
+    const HandleFind = () => {
+        if (ref.current) {
+            const value = ref.current.value.trim();
+
+            // Проверяем, что поле не пустое и ссылка валидна
+            if (value === '') {
+                setError('Пожалуйста, введите ссылку.');
+            } else if (!validateUrl(value)) {
+                setError('Неверный формат ссылки ВКонтакте.');
+            } else {
+                setError(null); // Если ошибка была, очищаем ее
+                push(`${PageConfig.user}?link=${value}`);
             }
         }
-        
-    }
-    return(
+    };
+
+    return (
         <div className="fixed left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] max-w-[500px] mx-auto w-full px-[20px] flex flex-col items-center gap-[20px]">
             <div className="w-full flex flex-col items-center justify-center gap-[10px]">
                 <div className="text-[#DDDDDD] font-[500] text-[22px]">Запустим проверку?</div>
-                <div className="text-[#AAAAAA] font-[300] text-[14px]">Введите в поле ниже сслыку на страницу ВК</div>
-                <div className="w-full"><input ref={ref} type="text" placeholder="https://vk.com/" className="w-full bg-white outline-none border-none rounded-[50px] py-[10px] px-[15px]" /></div>
+                <div className="text-[#AAAAAA] font-[300] text-[14px]">Введите в поле ниже ссылку на страницу ВК</div>
+                <div className="w-full">
+                    <input
+                        ref={ref}
+                        type="text"
+                        placeholder="https://vk.com/"
+                        className="w-full bg-white outline-none border-none rounded-[50px] py-[10px] px-[15px]"
+                    />
+                    {error && <div className="text-red-500 text-sm mt-2">{error}</div>}
+                </div>
             </div>
-            <div className="inline-flex"><button onClick={HandleFind} className="cursor-pointer rounded-[50px] bg-[#8E2373B2] text-[16px] py-[10px] px-[60px] text-white">Начать</button></div>
+            <div className="inline-flex">
+                <button onClick={HandleFind} className="cursor-pointer rounded-[50px] bg-[#8E2373B2] text-[16px] py-[10px] px-[60px] text-white">
+                    Начать
+                </button>
+            </div>
         </div>
-    )
-}
+    );
+};

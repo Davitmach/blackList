@@ -23,6 +23,13 @@ export const Menu = ()=> {
         }
         setActivePage(pathname); // Обновляем активную страницу при изменении pathname
     }, [pathname]);
+
+useEffect(()=> {
+    if (window.Telegram && window.Telegram.WebApp) { 
+    Telegram.WebApp.setHeaderColor('#000000');      
+    } 
+},[])
+
     if(hide == false) {
     return(
         <div className={` fixed bottom-0 left-[50%] translate-x-[-50%] Menu_container w-full max-w-[500px] mx-auto flex justify-between bg-[#00000080] rounded-t-[20px] p-[20px]`}>

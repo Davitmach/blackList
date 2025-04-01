@@ -3,9 +3,15 @@ import Image from "next/image";
 import { IUserInfo } from "../types/userInfo";
 import { IPerepiski, ISMS } from "../types/perepiski";
 import { IAktivnost } from "../types/aktivnost";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams,  } from "next/navigation";
+
 import { PageConfig } from "../config/pages";
 import { useEffect, useState } from "react";
+export default function Page() {
+  const [active,setActive] = useState(false);
+  const [link,setLink] = useState<{url:string}>({url:''});
+  const [info,setInfo] = useState<UserProfile|null>(null);
+  const [loading,setLoading] =useState<boolean>(true);
 interface IBox {
     img:string;
     name:string
@@ -1136,8 +1142,46 @@ const Analiz = ()=> {
   </div>
   )
 }
-export default function Page() {
-  const [active,setActive] = useState(false);
+
+  interface UserProfile {
+    avatar_url: string;
+    is_closed_profile: boolean;
+    total_posts: number;
+    followers_count: number;
+    friends_count: number;
+    friends_male: number;
+    friends_female: number;
+    friends_unknown_gender: number;
+    total_likes: number;
+    total_views: number;
+    total_comments: number;
+    total_reposts: number;
+    first_name:string;
+    last_name:string;
+  }
+  
+
+async function Analyz(url:{url:string}) {
+  // Отправляем POST-запрос на сервер с данными ссылки
+  // и заголовком "X-Telegram-InitData"
+  
+
+  const response = await fetch("https://blacklistone.ru/api/vk/analyze", { 
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          "X-Telegram-InitData": window.Telegram.WebApp.initData 
+      },
+      body: JSON.stringify(url)
+  });
+const data = await response.json();
+ if(data) {
+  setInfo(data);
+  setLoading(true)
+ }
+}
+
+
   useEffect(()=> {
 const act = localStorage.getItem('active');
 if(act == 'true') {
@@ -1147,19 +1191,39 @@ else {
   setActive(false);
 }
   },[])
+
+
+  const searchParams = useSearchParams();
+useEffect(()=> {
+  const link = {url:searchParams.get('link') || ''}
+ setLink(link)
+},[searchParams])
+useEffect(()=> {
+if(link.url !=='') {
+  Analyz(link)
+}
+},[link])
+  
+useEffect(()=> {
+if(info==null) {
+  setLoading(false)
+}
+},[info])
+
+
   return (
     <div className="max-w-[500px] mx-auto w-full flex flex-col gap-[30px] px-[20px]">
       <UserInfo
-        name="Андреев Андрей"
-        comments={33}
-        friends={224}
-        img="https://s3-alpha-sig.figma.com/img/cf30/bc8d/b0be4242116c53ba401676ad1c2e39db?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=PnVWXYOf2RQDPbB9G6IVRnkK1TEMaH7KkKU481RRG0ZABENLv~4TWuis7~GGMs6L7-y~VTWGYNFgF8UKUm1w-1ZhKjhu8YmR1~eWv~bTpVxpSfByReuq8zsRwdtAuHydq2wkLN2wJqvYR58eVVwQmSRzFq~n-BzUfJWyhsuHrLZ-AMFNA8Aoh3QNSsSo7Eg-HQ7kGNQKVKXOGSM3yefZukuRSYurl-E2lLpOoZfYw8wTVCyLMG4sTuW4EHVoiOyA5Z7aWAvp8RQUlPib4ho96rnFLhV2BQC8YTvQWYxdvOR0liOiP9IaOi0ZD4b534u8MvaOWZkC~7UtkhT-XscepA__"
-        like={43}
-        posts={411}
-        presents={422}
-        reposts={411}
-        subs={33}
-        views={43}
+        name={`${info?.first_name} ${info?.last_name}`}
+        comments={info?.total_comments ?? 0}
+        friends={info?.friends_count ?? 0}
+        img={info?.avatar_url||''}
+        like={info?.total_likes?? 0}
+        posts={info?.total_posts?? 0}
+        presents={4}
+        reposts={info?.total_reposts?? 0}
+        subs={info?.followers_count?? 0}
+        views={info?.total_views?? 0}
       />
       <Perepiski active={active} />
       <Poslania active={active}/>
