@@ -5,7 +5,7 @@ import { Geist, Geist_Mono, Roboto } from "next/font/google";
 import "./globals.scss";
 import { Header } from "./components/header/header";
 import { Menu } from "./components/menu/menu";
-
+import Script from 'next/script';
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -37,6 +37,7 @@ export default function RootLayout({
         {/* <Header/> */}
         {children}
         <Menu/>
+        <Script src="https://telegram.org/js/telegram-web-app.js"/>
       </body>
     </html>
   );
