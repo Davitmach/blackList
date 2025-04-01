@@ -1,4 +1,5 @@
 'use client';
+import { Suspense } from 'react';
 import Image from "next/image";
 import { IUserInfo } from "../types/userInfo";
 import { IPerepiski, ISMS } from "../types/perepiski";
@@ -1212,6 +1213,7 @@ if(info==null) {
 
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className="max-w-[500px] mx-auto w-full flex flex-col gap-[30px] px-[20px]">
       <UserInfo
         name={`${info?.first_name} ${info?.last_name}`}
@@ -1238,5 +1240,6 @@ if(info==null) {
       <Result active={active}/>
       <Up/>
     </div>
+    </Suspense>
   );
 }
