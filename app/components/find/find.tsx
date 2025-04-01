@@ -9,10 +9,14 @@ export const Find = () => {
     const ref = useRef<HTMLInputElement>(null);
     const [error, setError] = useState<string | null>(null);
 
-    // Регулярное выражение для валидации ссылки на ВКонтакте
+    // Регулярное выражение для валидации и извлечения ID из ссылки на ВКонтакте
     const validateUrl = (url: string) => {
-        const regex = /^(https?:\/\/)?(www\.)?vk\.com\/id\d+$/;
-        return regex.test(url);
+        const regex = /^(https?:\/\/)?(www\.)?vk\.com\/id(\d+)$/;
+        const match = url.match(regex);
+        if (match) {
+            return match[3]; // Возвращаем ID, который в третьей группе
+        }
+        return null;
     };
 
     const HandleFind = () => {
@@ -22,15 +26,17 @@ export const Find = () => {
             // Проверяем, что поле не пустое и ссылка валидна
             if (value === '') {
                 setError('Пожалуйста, введите ссылку.');
-            } else if (!validateUrl(value)) {
-                setError('Неверный формат ссылки ВКонтакте.');
             } else {
-                setError(null); // Если ошибка была, очищаем ее
-                push(`${PageConfig.user}?link=${value}`);
+                const userId = validateUrl(value);
+                if (!userId) {
+                    setError('Неверный формат ссылки ВКонтакте.');
+                } else {
+                    setError(null); // Если ошибка была, очищаем ее
+                    push(`${PageConfig.user}/id${userId}`);
+                }
             }
         }
     };
-
     return (
         <div className="fixed left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] max-w-[500px] mx-auto w-full px-[20px] flex flex-col items-center gap-[20px]">
             <div className="w-full flex flex-col items-center justify-center gap-[10px]">

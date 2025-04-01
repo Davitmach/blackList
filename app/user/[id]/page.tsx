@@ -1,12 +1,10 @@
 'use client';
 import { Suspense } from 'react';
 import Image from "next/image";
-import { IUserInfo } from "../types/userInfo";
-import { IPerepiski, ISMS } from "../types/perepiski";
-import { IAktivnost } from "../types/aktivnost";
-import { useParams, useRouter, useSearchParams,  } from "next/navigation";
-
-import { PageConfig } from "../config/pages";
+import { IUserInfo } from "../../types/userInfo";
+import { IPerepiski, ISMS } from "../../types/perepiski";
+import { IAktivnost } from "../../types/aktivnost";
+import {useParams, useRouter, useSearchParams,  } from "next/navigation";
 import { useEffect, useState } from "react";
 export default function Page() {
   const [active,setActive] = useState(false);
@@ -916,6 +914,7 @@ const Groups = (props:IPerepiski)=> {
       }
 }
 const Result = (props:IPerepiski)=> {
+  
     const {push} = useRouter();
     if (props.active == false) {
         return (
@@ -958,7 +957,7 @@ const Result = (props:IPerepiski)=> {
               <div className="text-[#DDDDDD] text-[14px]">Результат проверки</div>
             </div>
             <div className="w-full  flex flex-col gap-[10px] overflow-y-auto bg-[#000000]">
-           <ResultBox active="Средняя" blackList={54} podozritelnost="Низкая" img="https://s3-alpha-sig.figma.com/img/cf30/bc8d/b0be4242116c53ba401676ad1c2e39db?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=PnVWXYOf2RQDPbB9G6IVRnkK1TEMaH7KkKU481RRG0ZABENLv~4TWuis7~GGMs6L7-y~VTWGYNFgF8UKUm1w-1ZhKjhu8YmR1~eWv~bTpVxpSfByReuq8zsRwdtAuHydq2wkLN2wJqvYR58eVVwQmSRzFq~n-BzUfJWyhsuHrLZ-AMFNA8Aoh3QNSsSo7Eg-HQ7kGNQKVKXOGSM3yefZukuRSYurl-E2lLpOoZfYw8wTVCyLMG4sTuW4EHVoiOyA5Z7aWAvp8RQUlPib4ho96rnFLhV2BQC8YTvQWYxdvOR0liOiP9IaOi0ZD4b534u8MvaOWZkC~7UtkhT-XscepA__" name="Андреев Андрей" url="https://vk.com/danyaorjjkov"  />
+           <ResultBox active="Средняя" blackList={54} podozritelnost="Низкая" img={info?.avatar_url ||''} name={`${info?.first_name} ${info?.last_name}`} url={link.url ||''}  />
             </div>
           </div>
         );
@@ -1001,6 +1000,7 @@ const Up = () => {
     );
 };
 const PoslaniaBox = (props:{text:string})=> {
+
 return(
   <div className="relative flex bg-[#DDDDDD] rounded-[20px] gap-[10px] p-[10px] h-[86px] flex-shrink-0">
   <div className=""><svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1194,13 +1194,21 @@ else {
   },[])
 
 
-  const searchParams = useSearchParams();
+  const searchParams = useParams()
+  useEffect(() => {
+    const id = searchParams.id as string; // Получаем параметр 'id'
+    
+    if (id) {
+      setLink({ url: `https://vk.com/${id}` }); // Если id существует, устанавливаем его в состояние
+    } else {
+      setLink({ url: '' }); // Если id нет, устанавливаем пустую строку
+    }
+  }, [searchParams]);
 useEffect(()=> {
-  const link = {url:searchParams.get('link') || ''}
- setLink(link)
-},[searchParams])
-useEffect(()=> {
+  
 if(link.url !=='') {
+  console.log(link);
+  
   Analyz(link)
 }
 },[link])
