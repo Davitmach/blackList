@@ -1164,8 +1164,7 @@ const Analiz = ()=> {
   
 
 async function Analyz(url:{url:string}) {
-  // Отправляем POST-запрос на сервер с данными ссылки
-  // и заголовком "X-Telegram-InitData"
+
   
 
   const response = await fetch("https://blacklistone.ru/api/vk/analyze", { 
@@ -1214,11 +1213,11 @@ if(link.url !=='') {
 }
 },[link])
   
-useEffect(()=> {
-if(info==null) {
-  setLoading(false)
-}
-},[info])
+// useEffect(()=> {
+// if(info==null) {
+//   setLoading(false)
+// }
+// },[info])
 
 if(loading == true) return <Loading/>
   return (
