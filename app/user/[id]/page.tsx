@@ -1165,6 +1165,7 @@ const Analiz = ()=> {
 
 async function Analyz(url:{url:string}) {
 
+  console.log(url);
   
 
   const response = await fetch("https://blacklistone.ru/api/vk/analyze", { 
