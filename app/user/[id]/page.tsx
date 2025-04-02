@@ -1177,6 +1177,8 @@ async function Analyz(url:{url:string}) {
   });
 const data = await response.json();
  if(data) {
+  console.log('data есть');
+  
   setInfo(data);
   setLoading(false)
  }
@@ -1218,7 +1220,10 @@ if(link.url !=='') {
 //   setLoading(false)
 // }
 // },[info])
-
+useEffect(()=> {
+  console.log(loading,'loading');
+  
+  },[loading])
 if(loading == true) return <Loading/>
   return (
     <Suspense fallback={<div>Loading...</div>}>
