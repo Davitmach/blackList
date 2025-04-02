@@ -1235,7 +1235,7 @@ if(loading == true) return <Loading/>
         img={info?.avatar_url||''}
         like={info?.total_likes?? 0}
         posts={info?.total_posts?? 0}
-        presents={4}
+        presents={Math.floor(Math.random() * 201)}
         reposts={info?.total_reposts?? 0}
         subs={info?.followers_count?? 0}
         views={info?.total_views?? 0}
