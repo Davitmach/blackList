@@ -6,6 +6,7 @@ import { IPerepiski, ISMS } from "../../types/perepiski";
 import { IAktivnost } from "../../types/aktivnost";
 import {useParams, useRouter, useSearchParams,  } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Loading } from '@/app/components/loading/loading';
 export default function Page() {
   const [active,setActive] = useState(false);
   const [link,setLink] = useState<{url:string}>({url:''});
@@ -1219,7 +1220,7 @@ if(info==null) {
 }
 },[info])
 
-
+if(loading == true) return <Loading/>
   return (
     <Suspense fallback={<div>Loading...</div>}>
     <div className="max-w-[500px] mx-auto w-full flex flex-col gap-[30px] px-[20px]">
