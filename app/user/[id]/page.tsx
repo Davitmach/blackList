@@ -1177,7 +1177,7 @@ async function Analyz(url:{url:string}) {
   });
 const data = await response.json();
  if(data) {
-  console.log('data есть');
+  console.log(data+' есть');
   
   setInfo(data);
   setLoading(false)
