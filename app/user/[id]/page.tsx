@@ -1179,7 +1179,7 @@ async function Analyz(url:{url:string}) {
 const data = await response.json();
  if(data) {
   setInfo(data);
-  setLoading(true)
+  setLoading(false)
  }
 }
 
