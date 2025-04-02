@@ -1177,8 +1177,8 @@ async function Analyz(url:{url:string}) {
   });
 const data = await response.json();
  if(data) {
-  console.log(data+' есть');
-  
+console.log(JSON.stringify(data),'data');
+
   setInfo(data);
   setLoading(false)
  }
@@ -1215,11 +1215,10 @@ if(link.url !=='') {
 }
 },[link])
   
-// useEffect(()=> {
-// if(info==null) {
-//   setLoading(false)
-// }
-// },[info])
+useEffect(()=> {
+console.log(info,'info'); 
+
+},[info])
 useEffect(()=> {
   console.log(loading,'loading');
   
