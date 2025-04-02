@@ -1179,6 +1179,7 @@ async function Analyz(url:{url:string}) {
 const data = await response.json();
  if(data) {
 console.log(JSON.stringify(data),'data');
+console.log(data.avatar_url,`avatar_url`);
 
   setInfo(data);
   setLoading(false)
