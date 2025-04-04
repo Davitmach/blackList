@@ -40,14 +40,16 @@ const UserInfo = (props: IUserInfo) => {
     <div className="w-full flex flex-col gap-[30px]  mt-[30px]">
       <div className="bg-[#8E237333] rounded-[20px] py-[10px] px-[15px] flex gap-[20px]">
         <div>
-          <Image
+          {/* <Image
             alt="4"
             className="h-[48px] rounded-[50px]"
             quality={100}
             src={props.img}
             width={48}
             height={48}
-          />
+          /> */}
+          <img src={props.img}  width={48}
+            height={48}  className="h-[48px] rounded-[50px]"/>
         </div>
         <div className="flex gap-[10px] flex-col">
           <div className="text-[#DDDDDD] font-[500] text-[14px]">
@@ -1211,7 +1213,7 @@ else {
 useEffect(()=> {
   
 if(link.url !=='') {
-  console.log(link);
+
   
   Analyz(link)
 }
