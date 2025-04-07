@@ -1086,83 +1086,132 @@ const Poslania = (props:IPerepiski)=> {
       );
     } 
 }
-const Analiz = ()=> {
-  const {push} = useRouter();
-  const [man,setMan] = useState(100);
-  const [woman,setWoman] = useState(100);
-  return(
+const Analiz = () => {
+  const { push } = useRouter();
+  const [man, setMan] = useState(0);
+  const [woman, setWoman] = useState(0);
+
+  // Пример массива возрастов
+  useEffect(() => {
+    if(info) {
+    if(info.friends_female && info.friends_male) {
+    const total = info.friends_male + info.friends_female;
+    if (total > 0) {
+      const manPercent = Math.round((info.friends_male / total) * 100);
+      const womanPercent = 100 - manPercent; // или точно так же рассчитать через female
+      setMan(manPercent);
+      setWoman(womanPercent);
+    } else {
+      setMan(0);
+      setWoman(0);
+    }
+  }}
+  }, []);
+
+  const [ageStats, setAgeStats] = useState([
+    { label: "До 18", value: 0 },
+    { label: "19-25", value: 0 },
+    { label: "26-35", value: 0 },
+    { label: "Больше 36", value: 0 },
+  ]);
+
+  useEffect(() => {
+    const total = info?.friends_age_list.length ||0;
+    const groups = {
+      "До 18": 0,
+      "19-25": 0,
+      "26-35": 0,
+      "Больше 36": 0,
+    };
+
+    info?.friends_age_list.forEach((age) => {
+      if (age < 18) groups["До 18"]++;
+      else if (age <= 25) groups["19-25"]++;
+      else if (age <= 35) groups["26-35"]++;
+      else groups["Больше 36"]++;
+    });
+
+    const stats = Object.entries(groups).map(([label, count]) => ({
+      label,
+      value: Math.round((count / total) * 100),
+    }));
+
+    setAgeStats(stats);
+  }, [info?.friends_age_list]);
+
+  return (
     <div className="flex flex-col gap-[19px] bg-[#8E237333]  rounded-[20px] p-[15px] items-center relative">
-    <div className="flex gap-[10px] items-center">
-      <div className="absolute left-[15px] top-[15px]"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fillRule="evenodd" clipRule="evenodd" d="M9.5 18.875C4.32233 18.875 0.125 14.6777 0.125 9.5C0.125 4.32233 4.32233 0.125 9.5 0.125C14.6777 0.125 18.875 4.32233 18.875 9.5C18.875 14.6777 14.6777 18.875 9.5 18.875ZM9.50001 4.33333C8.94773 4.33333 8.50001 4.78105 8.50001 5.33333C8.50001 5.88562 8.94773 6.33333 9.50001 6.33333H9.51043C10.0627 6.33333 10.5104 5.88562 10.5104 5.33333C10.5104 4.78105 10.0627 4.33333 9.51043 4.33333H9.50001ZM7.9375 8.5C7.38522 8.5 6.9375 8.94771 6.9375 9.5C6.9375 10.0523 7.38522 10.5 7.9375 10.5H8.5V13.6667C8.5 14.219 8.94771 14.6667 9.5 14.6667H11.5833C12.1356 14.6667 12.5833 14.219 12.5833 13.6667C12.5833 13.1144 12.1356 12.6667 11.5833 12.6667H10.5V9.5C10.5 8.94771 10.0523 8.5 9.5 8.5H7.9375Z" fill="#926C88"/>
-</svg>
-</div>
-      <div>
-      <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fillRule="evenodd" clipRule="evenodd" d="M9 0.5C13.9706 0.5 18 4.52944 18 9.5C18 14.4706 13.9706 18.5 9 18.5C4.02944 18.5 0 14.4706 0 9.5C0 4.52944 4.02944 0.5 9 0.5ZM8.1 2.3557C4.54832 2.79859 1.8 5.82834 1.8 9.5C1.8 13.4764 5.02355 16.7 9 16.7C10.6638 16.7 12.1959 16.1356 13.4151 15.1879L8.40314 10.1759C8.39632 10.1691 8.38961 10.1622 8.383 10.1552C8.20877 9.99109 8.1 9.75825 8.1 9.5C8.1 9.49093 8.10013 9.48189 8.1004 9.47289C8.10013 9.4633 8.1 9.4537 8.1 9.44408V2.3557ZM9.9 2.3557V8.6H16.1443C15.7382 5.34315 13.1568 2.76183 9.9 2.3557ZM11.1728 10.4L14.6879 13.9151C15.462 12.9192 15.9804 11.7146 16.1443 10.4H11.1728Z" fill="#926C88"/>
-</svg>
-
-
-
-
-
-
-      </div>
-      <div className="text-[#DDDDDD] text-[14px]">Анализ друзей</div>
-    </div>
-    <div className="flex flex-col items-center justify-between  relative gap-[15px] w-full">
-    <div className="w-full flex flex-col gap-[10px]">
-      <div className="w-full flex  items-center gap-[5px]">
-        <div style={{width:`${man}%`}} className="bg-[#27238E] h-[8px] rounded-[10px]"></div>
-        <div className="text-[#DDDDDD] text-[14px] font-[400] text-nowrap">{man}% М</div>
-      </div>
-      <div className="w-full flex  items-center gap-[5px]">
-        <div style={{width:`${woman}%`}} className="bg-[#8E2383] h-[8px] rounded-[10px]"></div>
-        <div className="text-[#DDDDDD] text-[14px] font-[400] text-nowrap">{woman}% Ж</div>
-      </div>
-    </div>
-    <div className="h-full w-full flex flex-col gap-[15px]">
-      <div className="text-[#DDDDDD] text-[14px] font-[400]">Возраст</div>
-      <div className="flex flex-col gap-[10px]">
-        <div className="flex w-full bg-[#DDDDDD] rounded-[100px] justify-between px-[10px] h-[26px] items-center">
-          <div className="text-[#444444] text-[14px] font-[400]">До 18</div>
-          <div  className="text-[#444444] text-[14px] font-[400]">6%</div>
+      <div className="flex gap-[10px] items-center">
+        <div className="absolute left-[15px] top-[15px]">
+          {/* иконка */}
         </div>
-        <div className="flex w-full bg-[#DDDDDD] rounded-[100px] justify-between px-[10px] h-[26px] items-center">
-          <div className="text-[#444444] text-[14px] font-[400]">19-25</div>
-          <div className="text-[#444444] text-[14px] font-[400]">47%</div>
+        <div className="text-[#DDDDDD] text-[14px]">Анализ друзей</div>
+      </div>
+
+      <div className="flex flex-col items-center justify-between relative gap-[15px] w-full">
+        <div className="w-full flex flex-col gap-[10px]">
+          <div className="w-full flex  items-center gap-[5px]">
+            <div
+              style={{ width: `${man}%` }}
+              className="bg-[#27238E] h-[8px] rounded-[10px]"
+            ></div>
+            <div className="text-[#DDDDDD] text-[14px] font-[400] text-nowrap">
+              {man}% М
+            </div>
+          </div>
+          <div className="w-full flex  items-center gap-[5px]">
+            <div
+              style={{ width: `${woman}%` }}
+              className="bg-[#8E2383] h-[8px] rounded-[10px]"
+            ></div>
+            <div className="text-[#DDDDDD] text-[14px] font-[400] text-nowrap">
+              {woman}% Ж
+            </div>
+          </div>
         </div>
-        <div className="flex w-full bg-[#DDDDDD] rounded-[100px] justify-between px-[10px] h-[26px] items-center">
-          <div className="text-[#444444] text-[14px] font-[400]">26-35</div>
-          <div className="text-[#444444] text-[14px] font-[400]">22%</div>
-        </div>
-        <div className="flex w-full bg-[#DDDDDD] rounded-[100px] justify-between px-[10px] h-[26px] items-center">
-          <div className="text-[#444444] text-[14px] font-[400]">Больше 36</div>
-          <div className="text-[#444444] text-[14px] font-[400]">24%</div>
+
+        <div className="h-full w-full flex flex-col gap-[15px]">
+          <div className="text-[#DDDDDD] text-[14px] font-[400]">Возраст</div>
+          <div className="flex flex-col gap-[10px]">
+            {ageStats.map((item, index) => (
+              <div
+                key={index}
+                className="flex w-full bg-[#DDDDDD] rounded-[100px] justify-between px-[10px] h-[26px] items-center"
+              >
+                <div className="text-[#444444] text-[14px] font-[400]">
+                  {item.label}
+                </div>
+                <div className="text-[#444444] text-[14px] font-[400]">
+                  {item.value}%
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
-    </div>
-  </div>
-  )
+  );
+};
+
+interface UserProfile {
+  avatar_url: string;
+  is_closed_profile: boolean;
+  total_posts: number;
+  followers_count: number;
+  friends_count: number | null; // null если профиль закрыт
+  friends_male: number;
+  friends_female: number;
+  friends_unknown_gender: number;
+  friends_average_age: number;
+  friends_age_list: number[];
+  total_likes: number;
+  total_views: number;
+  total_comments: number;
+  total_reposts: number;
+  first_name: string;
+  last_name: string;
 }
 
-  interface UserProfile {
-    avatar_url: string;
-    is_closed_profile: boolean;
-    total_posts: number;
-    followers_count: number;
-    friends_count: number;
-    friends_male: number;
-    friends_female: number;
-    friends_unknown_gender: number;
-    total_likes: number;
-    total_views: number;
-    total_comments: number;
-    total_reposts: number;
-    first_name:string;
-    last_name:string;
-  }
   
 
 async function Analyz(url:{url:string}) {
@@ -1184,10 +1233,18 @@ console.log(JSON.stringify(data),'data');
 console.log(data.avatar_url,`avatar_url`);
 
   setInfo(data);
+  localStorage.setItem('data',JSON.stringify(data))
   setLoading(false)
  }
 }
+useEffect(()=> {
+const data = localStorage.getItem('data');
+if(data) {
+  const parsedData = JSON.parse(data) as UserProfile;
+  setInfo(parsedData);
 
+  setLoading(false)
+}},[])
 
   useEffect(()=> {
 const act = localStorage.getItem('active');
