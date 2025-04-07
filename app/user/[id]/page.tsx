@@ -971,7 +971,7 @@ const ResultBox = (props:IResut)=> {
 return(
     <div className="py-[10px] px-[20px] flex flex-col gap-[20px] justify-between h-full">
         <div className="flex w-full gap-[10px] ">
-            <div><Image src={props.img} alt="img" width={48} height={48} className="rounded-[50px] h-[48px] w-[48px]"/></div>
+            <div><img src={props.img} width={48} height={48} className="rounded-[50px] h-[48px] w-[48px]"  /></div>
             <div >
                 <div className="text-[#DDDDDD] text-[14px] font-[500]">{props.name}</div>
                 <div className="text-[12px] text-[#AAAAAA]">{props.url}</div>
