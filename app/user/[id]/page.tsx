@@ -1237,14 +1237,14 @@ console.log(data.avatar_url,`avatar_url`);
   setLoading(false)
  }
 }
-useEffect(()=> {
-const data = localStorage.getItem('data');
-if(data) {
-  const parsedData = JSON.parse(data) as UserProfile;
-  setInfo(parsedData);
+// useEffect(()=> {
+// const data = localStorage.getItem('data');
+// if(data) {
+//   const parsedData = JSON.parse(data) ;
+//   setInfo(parsedData);
 
-  setLoading(false)
-}},[])
+//   setLoading(false)
+// }},[])
 
   useEffect(()=> {
 const act = localStorage.getItem('active');
