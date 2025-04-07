@@ -1259,6 +1259,8 @@ else {
 
   const searchParams = useParams()
   useEffect(() => {
+    console.log('setLIBK');
+    
     const id = searchParams.id as string; // Получаем параметр 'id'
     
     if (id) {
@@ -1270,7 +1272,7 @@ else {
   }, []);
 
 useEffect(()=> {
-  
+  console.log('analiz');
 if(link.url !=='') {
 
   
