@@ -1263,10 +1263,22 @@ else {
     
     if (id) {
       setLink({ url: `https://vk.com/${id}` }); // Если id существует, устанавливаем его в состояние
+      Analyz(link)
     } else {
       setLink({ url: '' }); // Если id нет, устанавливаем пустую строку
     }
   }, [searchParams]);
+  useEffect(()=> {
+    const id = searchParams.id as string; 
+    if(id) {
+      setLink({ url: `https://vk.com/${id}` }); // Если id существует, устанавливаем его в состояние
+      Analyz(link)
+    }
+    else {
+      setLink({ url: '' }); // Если id нет, устанавливаем пустую строку
+     
+    }
+  },[])
 useEffect(()=> {
   
 if(link.url !=='') {
