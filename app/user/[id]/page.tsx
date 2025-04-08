@@ -1187,28 +1187,32 @@ interface UserProfile {
 
   
 
-async function Analyz(url:{url:string}) {
+async function Analyz(url: { url: string }) {
+  console.log("Analyzing", url);
 
-  console.log(url);
-  
-
-  const response = await fetch("https://blacklistone.ru/api/vk/analyze", { 
+  try {
+    const response = await fetch("https://blacklistone.ru/api/vk/analyze", {
       method: "POST",
       headers: {
-          "Content-Type": "application/json",
-          "X-Telegram-InitData": window.Telegram.WebApp.initData 
+        "Content-Type": "application/json",
+        "X-Telegram-InitData": window.Telegram.WebApp.initData
       },
       body: JSON.stringify(url)
-  });
-const data = await response.json();
- if(data) {
-console.log(JSON.stringify(data),'data');
-console.log(data.avatar_url,`avatar_url`);
+    });
 
-  setInfo(data);
-  localStorage.setItem('data',JSON.stringify(data))
-  setLoading(false)
- }
+    const data = await response.json();
+    if (data) {
+      console.log("Response data:", data);
+      setInfo(data);
+      localStorage.setItem("data", JSON.stringify(data));
+    } else {
+      console.warn("No data returned");
+    }
+  } catch (error) {
+    console.error("Analyze error:", error);
+  } finally {
+    setLoading(false);
+  }
 }
 // useEffect(()=> {
 // const data = localStorage.getItem('data');
@@ -1244,20 +1248,20 @@ else {
     }
   }, []);
 
-useEffect(()=> {
-  const Data = localStorage.getItem('data');
-  const ParsedData = JSON.parse(Data || '{}') as UserProfile;
-  if(Data) {
-if(link.url !=='') {
-  Analyz(link)
-}
-}
-else {
-  setInfo(ParsedData);
-  setLoading(false)
-
-}
-},[link])
+  useEffect(() => {
+    const localData = localStorage.getItem('data');
+    const parsedLocalData = JSON.parse(localData || '{}') as UserProfile;
+  
+    if (link.url !== '') {
+      if (!localData) {
+        Analyz(link);
+      } else {
+        setInfo(parsedLocalData);
+        setLoading(false);
+      }
+    }
+  }, [link.url]);
+  
   
 useEffect(()=> {
 console.log(info,'info'); 
