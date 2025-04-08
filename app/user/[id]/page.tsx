@@ -1242,7 +1242,10 @@ useEffect(()=> {
   const ParsedData = JSON.parse(Data || '{}') as UserProfile;
   if(Data) {
 if(link.url !=='') {
-  Analyz(link)
+  setTimeout(() => {
+    Analyz(link)    
+  }, 1000);
+
 }
 }
 else {
