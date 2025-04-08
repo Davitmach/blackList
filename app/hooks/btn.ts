@@ -25,14 +25,7 @@ export const useTelegramButtons = () => {
     BackButton.offClick();
 
     if (pathname === '/') {
-      // Кнопка "Закрыть"
-      BackButton.hide();
-
-      MainButton.setText('Закрыть');
-      MainButton.show();
-      MainButton.onClick(() => {
-        WebApp.close();
-      });
+     
     } else {
       // Кнопка "Назад"
       MainButton.hide();
