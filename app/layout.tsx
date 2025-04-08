@@ -7,6 +7,7 @@ import { Header } from "./components/header/header";
 import { Menu } from "./components/menu/menu";
 import Script from 'next/script';
 import { Full } from './components/full/full';
+import { useTelegramButtons } from './hooks/btn';
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  useTelegramButtons();
   return (
     <html lang="en">
       <body
