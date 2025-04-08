@@ -1255,7 +1255,7 @@ if(link.url !=='') {
 else {
   setInfo(ParsedData);
   setLoading(false)
-  
+
 }
 },[link])
   
