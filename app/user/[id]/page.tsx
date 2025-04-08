@@ -1245,11 +1245,17 @@ else {
   }, []);
 
 useEffect(()=> {
-  console.log('analiz');
+  const Data = localStorage.getItem('data');
+  const ParsedData = JSON.parse(Data || '{}') as UserProfile;
+  if(Data) {
 if(link.url !=='') {
-
-  
   Analyz(link)
+}
+}
+else {
+  setInfo(ParsedData);
+  setLoading(false)
+  
 }
 },[link])
   
