@@ -1,5 +1,30 @@
+'use client'
+import { useEffect } from "react";
 import { HistoryBox } from "../components/historyBox/historyBox"
 export default function History() {
+    async function History() {
+   
+      
+    
+        const response = await fetch("https://blacklistone.ru/api/user_data/search_history", { 
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "X-Telegram-InitData": window.Telegram.WebApp.initData // Заголовок остается без изменений
+            },
+          
+        });
+    
+        const data = await response.json();
+        console.log(data);
+        
+    }
+    useEffect(()=> {
+setTimeout(() => {
+    History().then(console.log); 
+}, 1000);
+    },[])
+   
     return(
         <div className="max-w-[500px] mx-auto w-full px-[20px] flex flex-col gap-[10px] mt-[30px]">
             <div className="text-[#DDDDDD] text-[16px]">Ваша история поиска:</div>
