@@ -1,39 +1,58 @@
-'use client'
-import { useEffect,useState } from "react";
-import { HistoryBox } from "../components/historyBox/historyBox"
+"use client";
+import { useEffect, useState } from "react";
+import { HistoryBox } from "../components/historyBox/historyBox";
 export default function History() {
-    const [history,setHistory] = useState([]);
-    async function History() {
-   
-      
-    
-        const response = await fetch("https://blacklistone.ru/api/user_data/search_history", { 
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "X-Telegram-InitData": window.Telegram.WebApp.initData // Заголовок остается без изменений
-            },
-          
-        });
-    
-        const data = await response.json();
-        console.log(data[1974611991]);
-        
-    }
-    useEffect(()=> {
-setTimeout(() => {
-    History().then(console.log); 
-}, 1000);
-    },[])
-   
-    return(
-        <div className="max-w-[500px] mx-auto w-full px-[20px] flex flex-col gap-[10px] mt-[30px]">
-            <div className="text-[#DDDDDD] text-[16px]">Ваша история поиска:</div>
-            <div className="flex flex-col gap-[10px]  overflow-y-auto pb-[110px]">{
-                Array.from({length: 35}, (_, index) => (
-                    <HistoryBox img="https://s3-alpha-sig.figma.com/img/cf30/bc8d/b0be4242116c53ba401676ad1c2e39db?Expires=1742774400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=CNnMDVDrqBi7aTi~6YWIxk3Op5T9cTZVtiTfKP14WkRcnRwJosTbRUwzsi9kIxHbkf0r46Orqvhkk7f3diF1P~LGB5swNuE9Xnw0gOi5WALl52J-XqGc0fnSuxrw2sEfD3byZ5DzyjKYp8otIJFC~2yuSwct0gEpNgV4jg3N0~7Px3hHOhtbb03Z7tpHsCgvoZAQ4oEDSjEuVaac21yQKWh8Mq2zX5Gs7ElmDiM-1ik6ZyX10KQUGxDKGdHetfnv8IHtV83ueMv1pL-cnRqqKH2MxiBWxC6uWN9clYquTJU1ofD28vbgZ-3wRhktVxD46eyA7HLNkx6Z2A15HbqSgw__" info="только что" date="02.03.2025" name="Адреев Андрей" key={index} /> // Предполагая, что HistoryBox — это компонент
-                ))
-            }</div>
-        </div>
-    )
+  interface HistoryItem {
+    date: string;
+    first_name: string;
+    link_for_picture: string;
+    link_for_profile: string;
+    second_name: string;
+  }
+  const [history, setHistory] = useState<HistoryItem[]>([]);
+  async function History() {
+    const response = await fetch(
+      "https://blacklistone.ru/api/user_data/search_history",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Telegram-InitData": window.Telegram.WebApp.initData, // Заголовок остается без изменений
+        },
+      }
+    );
+
+    const data = await response.json();
+    console.log(data[1974611991]);
+    setHistory(data[1974611991]);
+  }
+  useEffect(() => {
+    setTimeout(() => {
+      History().then(console.log);
+    }, 1000);
+  }, []);
+
+  return (
+    <div className="max-w-[500px] mx-auto w-full px-[20px] flex flex-col gap-[10px] mt-[30px]">
+      <div className="text-[#DDDDDD] text-[16px]">Ваша история поиска:</div>
+      <div className="flex flex-col gap-[10px]  overflow-y-auto pb-[110px]">
+      {Array.isArray(history) &&
+  history.length > 0 &&
+  history.map((item, index) => {
+    const formattedDate = new Date(item.date).toLocaleDateString("ru-RU"); // Получим формат DD.MM.YYYY
+
+    return (
+      <HistoryBox
+        key={index}
+        img={item?.link_for_picture}
+        date={formattedDate}
+info="Только что" name={`${item?.first_name} ${item?.second_name}`}
+link={item?.link_for_profile}
+      />
+    );
+  })}
+
+      </div>
+    </div>
+  );
 }
