@@ -245,13 +245,9 @@ const SMS = (props: ISMS) => {
     <div className="bg-[#DDDDDD] p-[10px] rounded-[10px] flex justify-between items-center">
       <div className="flex items-center gap-[10px]">
         <div>
-          <Image
-            alt="4"
-            className="w-[32px] h-[32px] rounded-[50px]"
-            width={32}
-            height={32}
-            src={props.img}
-          />
+          <img   src={props.img}  width={32}
+            height={32} className='w-[32px] h-[32px] rounded-[50px]'/>
+         
         </div>
         <div className="underline text-[#222222] text-[14px]">{props.name}</div>
       </div>
@@ -363,13 +359,8 @@ return(
     <div className="bg-[#DDDDDD] p-[10px] rounded-[10px] flex justify-between items-center">
     <div className="flex items-center gap-[10px]">
       <div>
-        <Image
-          alt="4"
-          className="w-[16px] h-[16px] rounded-[50px]"
-          width={16}
-          height={16}
-          src={props.img}
-        />
+        <img className='w-[16px] h-[16px] rounded-[50px]' width={16} height={16} src={props.img}/>
+       
       </div>
       <div className="underline text-[#222222] text-[14px]">{props.name}</div>
     </div>
@@ -491,13 +482,7 @@ const FriendsBox = (props:IBox)=> {
         <div className="bg-[#DDDDDD] p-[10px] rounded-[10px] flex justify-between items-center">
         <div className="flex items-center gap-[10px]">
           <div>
-            <Image
-              alt="4"
-              className="w-[16px] h-[16px] rounded-[50px]"
-              width={16}
-              height={16}
-              src={props.img}
-            />
+          <img className='w-[16px] h-[16px] rounded-[50px]' width={16} height={16} src={props.img}/>
           </div>
           <div className="underline text-[#222222] text-[14px]">{props.name}</div>
         </div>
@@ -567,13 +552,7 @@ const LikeBox = (props:IAktivnost)=> {
         <div className="bg-[#DDDDDD] p-[10px] rounded-[10px] flex justify-between items-center">
         <div className="flex items-center gap-[10px]">
           <div>
-            <Image
-              alt="4"
-              className="w-[16px] h-[16px] rounded-[50px]"
-              width={16}
-              height={16}
-              src={props.img}
-            />
+          <img className='w-[16px] h-[16px] rounded-[50px]' width={16} height={16} src={props.img}/>
           </div>
           <div className="underline text-[#222222] text-[14px]">{props.name}</div>
         </div>
@@ -835,13 +814,7 @@ const GroupsBox = (props:IGroup)=> {
         <div className="bg-[#DDDDDD] p-[10px] rounded-[10px] flex justify-between items-center">
         <div className="flex items-center gap-[10px]">
           <div>
-            <Image
-              alt="4"
-              className="w-[16px] h-[16px] rounded-[50px]"
-              width={16}
-              height={16}
-              src={props.img}
-            />
+          <img className='w-[16px] h-[16px] rounded-[50px]' width={16} height={16} src={props.img}/>
           </div>
           <div className="underline text-[#222222] text-[14px]">{props.name}</div>
         </div>
