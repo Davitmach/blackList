@@ -8,6 +8,7 @@ import { Menu } from "./components/menu/menu";
 import Script from 'next/script';
 import { Full } from './components/full/full';
 import { useTelegramButtons } from './hooks/btn';
+import TelegramControlsClient from './components/tg/tg';
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -31,7 +32,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  useTelegramButtons();
+
   return (
     <html lang="en">
       <body
@@ -39,6 +40,7 @@ export default function RootLayout({
       >
         {/* <Header/> */}
         {children}
+        <TelegramControlsClient/>
         <Menu/>
         <Full/>
         <Script src="https://telegram.org/js/telegram-web-app.js"/>
