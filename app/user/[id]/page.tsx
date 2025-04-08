@@ -1238,21 +1238,14 @@ else {
   }, []);
 
 useEffect(()=> {
-  const Data = localStorage.getItem('data');
-  const ParsedData = JSON.parse(Data || '{}') as UserProfile;
-  if(Data) {
+
 if(link.url !=='') {
   setTimeout(() => {
     Analyz(link)    
   }, 1000);
 
 }
-}
-else {
-  setInfo(ParsedData);
-  setLoading(false)
 
-}
 },[link])
   
 useEffect(()=> {
