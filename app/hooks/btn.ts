@@ -17,26 +17,16 @@ export const useTelegramButtons = () => {
     const WebApp = window.Telegram?.WebApp;
     if (!WebApp) return;
 
-    const MainButton = WebApp.MainButton;
     const BackButton = WebApp.BackButton;
 
-    // Очистка предыдущих обработчиков
-    MainButton.offClick();
+    // Сброс предыдущих обработчиков
     BackButton.offClick();
 
     if (pathname === '/') {
-      // Кнопка "Закрыть"
+      // На корневой странице Telegram показывает крестик сам, скрываем BackButton
       BackButton.hide();
-
-      MainButton.setText('Закрыть');
-      MainButton.show();
-      MainButton.onClick(() => {
-        WebApp.close();
-      });
     } else {
-      // Кнопка "Назад"
-      MainButton.hide();
-
+      // Показываем кнопку "Назад"
       BackButton.show();
       BackButton.onClick(() => {
         router.back();
