@@ -11,13 +11,28 @@ export const Find = () => {
 
     // Регулярное выражение для валидации и извлечения ID из ссылки на ВКонтакте
     const validateUrl = (url: string) => {
-        const regex = /^(https?:\/\/)?(www\.)?vk\.com\/([a-zA-Z0-9_.]+)$/;
-        const match = url.match(regex);
-        if (match) {
-            return match[3]; // Возвращаем username или id
+        try {
+            // Удаляем параметры после ?
+            const cleanUrl = url.split('?')[0];
+    
+            // Поддержка ссылок без https://
+            const normalizedUrl = cleanUrl.startsWith('http') ? cleanUrl : `https://${cleanUrl}`;
+    
+            const parsedUrl = new URL(normalizedUrl);
+    
+            if (parsedUrl.hostname !== 'vk.com' && parsedUrl.hostname !== 'www.vk.com') {
+                return null;
+            }
+    
+            const path = parsedUrl.pathname.slice(1); // удаляем начальный "/"
+            const valid = /^[a-zA-Z0-9_.]+$/.test(path); // проверка на допустимые символы
+    
+            return valid ? path : null;
+        } catch {
+            return null;
         }
-        return null;
     };
+    
     const HandleFind = () => {
         if (ref.current) {
             const value = ref.current.value.trim();
