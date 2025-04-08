@@ -11,28 +11,26 @@ export const Find = () => {
 
     // Регулярное выражение для валидации и извлечения ID из ссылки на ВКонтакте
     const validateUrl = (url: string) => {
-        const regex = /^(https?:\/\/)?(www\.)?vk\.com\/id(\d+)$/;
+        const regex = /^(https?:\/\/)?(www\.)?vk\.com\/([a-zA-Z0-9_.]+)$/;
         const match = url.match(regex);
         if (match) {
-            return match[3]; // Возвращаем ID, который в третьей группе
+            return match[3]; // Возвращаем username или id
         }
         return null;
     };
-
     const HandleFind = () => {
         if (ref.current) {
             const value = ref.current.value.trim();
-
-            // Проверяем, что поле не пустое и ссылка валидна
+    
             if (value === '') {
                 setError('Пожалуйста, введите ссылку.');
             } else {
-                const userId = validateUrl(value);
-                if (!userId) {
+                const userIdOrUsername = validateUrl(value);
+                if (!userIdOrUsername) {
                     setError('Неверный формат ссылки ВКонтакте.');
                 } else {
-                    setError(null); // Если ошибка была, очищаем ее
-                    push(`${PageConfig.user}/id${userId}`);
+                    setError(null);
+                    push(`${PageConfig.user}/${userIdOrUsername}`);
                 }
             }
         }
