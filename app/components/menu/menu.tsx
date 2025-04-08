@@ -27,6 +27,7 @@ export const Menu = ()=> {
 useEffect(()=> {
     if (window.Telegram && window.Telegram.WebApp) { 
     Telegram.WebApp.setHeaderColor('#000000');      
+    
     } 
 },[])
 
