@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 declare global {
   interface Window {
@@ -9,7 +9,7 @@ declare global {
   }
 }
 
-export const useTelegramNavigation = () => {
+export const useTelegramButtons = () => {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -17,17 +17,26 @@ export const useTelegramNavigation = () => {
     const WebApp = window.Telegram?.WebApp;
     if (!WebApp) return;
 
-    const BackButton = WebApp.BackButton;
     const MainButton = WebApp.MainButton;
+    const BackButton = WebApp.BackButton;
 
+    // Очистка предыдущих обработчиков
+    MainButton.offClick();
     BackButton.offClick();
-    MainButton.hide(); // всегда скрыт
 
     if (pathname === '/') {
-      // На главной ничего не делаем, Telegram сам скроет всё
+      // Кнопка "Закрыть"
       BackButton.hide();
+
+      MainButton.setText('Закрыть');
+      MainButton.show();
+      MainButton.onClick(() => {
+        WebApp.close();
+      });
     } else {
-      // На других страницах — показываем BackButton
+      // Кнопка "Назад"
+      MainButton.hide();
+
       BackButton.show();
       BackButton.onClick(() => {
         router.back();
