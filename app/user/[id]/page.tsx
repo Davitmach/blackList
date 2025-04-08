@@ -344,8 +344,8 @@ const Perepiski = (props: IPerepiski) => {
         <div className="w-full aspect-square flex flex-col gap-[10px] overflow-y-auto bg-[#000000]">
           {Array.from({ length: 5 }, (e, _) => (
             <SMS
-              img="https://s3-alpha-sig.figma.com/img/cf30/bc8d/b0be4242116c53ba401676ad1c2e39db?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=PnVWXYOf2RQDPbB9G6IVRnkK1TEMaH7KkKU481RRG0ZABENLv~4TWuis7~GGMs6L7-y~VTWGYNFgF8UKUm1w-1ZhKjhu8YmR1~eWv~bTpVxpSfByReuq8zsRwdtAuHydq2wkLN2wJqvYR58eVVwQmSRzFq~n-BzUfJWyhsuHrLZ-AMFNA8Aoh3QNSsSo7Eg-HQ7kGNQKVKXOGSM3yefZukuRSYurl-E2lLpOoZfYw8wTVCyLMG4sTuW4EHVoiOyA5Z7aWAvp8RQUlPib4ho96rnFLhV2BQC8YTvQWYxdvOR0liOiP9IaOi0ZD4b534u8MvaOWZkC~7UtkhT-XscepA__"
-              name="Андреев Андрей"
+              img={info?.avatar_url || ''}
+              name={`${info?.last_name} ${info?.first_name}`}
               key={_}
             />
           ))}
@@ -467,8 +467,8 @@ const Aktivonst = (props:IPerepiski)=> {
               {Array.from({ length: 5 }, (e, _) => (
                 <AktivonstBox
                 count={3}
-                  img="https://s3-alpha-sig.figma.com/img/cf30/bc8d/b0be4242116c53ba401676ad1c2e39db?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=PnVWXYOf2RQDPbB9G6IVRnkK1TEMaH7KkKU481RRG0ZABENLv~4TWuis7~GGMs6L7-y~VTWGYNFgF8UKUm1w-1ZhKjhu8YmR1~eWv~bTpVxpSfByReuq8zsRwdtAuHydq2wkLN2wJqvYR58eVVwQmSRzFq~n-BzUfJWyhsuHrLZ-AMFNA8Aoh3QNSsSo7Eg-HQ7kGNQKVKXOGSM3yefZukuRSYurl-E2lLpOoZfYw8wTVCyLMG4sTuW4EHVoiOyA5Z7aWAvp8RQUlPib4ho96rnFLhV2BQC8YTvQWYxdvOR0liOiP9IaOi0ZD4b534u8MvaOWZkC~7UtkhT-XscepA__"
-                  name="Андреев Андрей"
+                img={info?.avatar_url || ''}
+                name={`${info?.last_name} ${info?.first_name}`}
                   key={_}
                 />
               ))}
@@ -537,8 +537,8 @@ const Friends = (props:IPerepiski)=> {
               {Array.from({ length: 5 }, (e, _) => (
                 <FriendsBox
               
-                  img="https://s3-alpha-sig.figma.com/img/cf30/bc8d/b0be4242116c53ba401676ad1c2e39db?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=PnVWXYOf2RQDPbB9G6IVRnkK1TEMaH7KkKU481RRG0ZABENLv~4TWuis7~GGMs6L7-y~VTWGYNFgF8UKUm1w-1ZhKjhu8YmR1~eWv~bTpVxpSfByReuq8zsRwdtAuHydq2wkLN2wJqvYR58eVVwQmSRzFq~n-BzUfJWyhsuHrLZ-AMFNA8Aoh3QNSsSo7Eg-HQ7kGNQKVKXOGSM3yefZukuRSYurl-E2lLpOoZfYw8wTVCyLMG4sTuW4EHVoiOyA5Z7aWAvp8RQUlPib4ho96rnFLhV2BQC8YTvQWYxdvOR0liOiP9IaOi0ZD4b534u8MvaOWZkC~7UtkhT-XscepA__"
-                  name="Андреев Андрей"
+                img={info?.avatar_url || ''}
+                name={`${info?.last_name} ${info?.first_name}`}
                   key={_}
                 />
               ))}
@@ -609,8 +609,8 @@ const Likes = (props:IPerepiski)=> {
               {Array.from({ length: 5 }, (e, _) => (
                 <LikeBox
               count={4}
-                  img="https://s3-alpha-sig.figma.com/img/cf30/bc8d/b0be4242116c53ba401676ad1c2e39db?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=PnVWXYOf2RQDPbB9G6IVRnkK1TEMaH7KkKU481RRG0ZABENLv~4TWuis7~GGMs6L7-y~VTWGYNFgF8UKUm1w-1ZhKjhu8YmR1~eWv~bTpVxpSfByReuq8zsRwdtAuHydq2wkLN2wJqvYR58eVVwQmSRzFq~n-BzUfJWyhsuHrLZ-AMFNA8Aoh3QNSsSo7Eg-HQ7kGNQKVKXOGSM3yefZukuRSYurl-E2lLpOoZfYw8wTVCyLMG4sTuW4EHVoiOyA5Z7aWAvp8RQUlPib4ho96rnFLhV2BQC8YTvQWYxdvOR0liOiP9IaOi0ZD4b534u8MvaOWZkC~7UtkhT-XscepA__"
-                  name="Андреев Андрей"
+              img={info?.avatar_url || ''}
+              name={`${info?.last_name} ${info?.first_name}`}
                   key={_}
                 />
               ))}
@@ -673,8 +673,8 @@ const OutLikes = (props:IPerepiski)=> {
               {Array.from({ length: 5 }, (e, _) => (
                 <LikeBox
               count={4}
-                  img="https://s3-alpha-sig.figma.com/img/cf30/bc8d/b0be4242116c53ba401676ad1c2e39db?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=PnVWXYOf2RQDPbB9G6IVRnkK1TEMaH7KkKU481RRG0ZABENLv~4TWuis7~GGMs6L7-y~VTWGYNFgF8UKUm1w-1ZhKjhu8YmR1~eWv~bTpVxpSfByReuq8zsRwdtAuHydq2wkLN2wJqvYR58eVVwQmSRzFq~n-BzUfJWyhsuHrLZ-AMFNA8Aoh3QNSsSo7Eg-HQ7kGNQKVKXOGSM3yefZukuRSYurl-E2lLpOoZfYw8wTVCyLMG4sTuW4EHVoiOyA5Z7aWAvp8RQUlPib4ho96rnFLhV2BQC8YTvQWYxdvOR0liOiP9IaOi0ZD4b534u8MvaOWZkC~7UtkhT-XscepA__"
-                  name="Андреев Андрей"
+              img={info?.avatar_url || ''}
+              name={`${info?.last_name} ${info?.first_name}`}
                   key={_}
                 />
               ))}
@@ -732,8 +732,8 @@ const Comments = (props:IPerepiski)=> {
               {Array.from({ length: 5 }, (e, _) => (
                 <LikeBox
               count={4}
-                  img="https://s3-alpha-sig.figma.com/img/cf30/bc8d/b0be4242116c53ba401676ad1c2e39db?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=PnVWXYOf2RQDPbB9G6IVRnkK1TEMaH7KkKU481RRG0ZABENLv~4TWuis7~GGMs6L7-y~VTWGYNFgF8UKUm1w-1ZhKjhu8YmR1~eWv~bTpVxpSfByReuq8zsRwdtAuHydq2wkLN2wJqvYR58eVVwQmSRzFq~n-BzUfJWyhsuHrLZ-AMFNA8Aoh3QNSsSo7Eg-HQ7kGNQKVKXOGSM3yefZukuRSYurl-E2lLpOoZfYw8wTVCyLMG4sTuW4EHVoiOyA5Z7aWAvp8RQUlPib4ho96rnFLhV2BQC8YTvQWYxdvOR0liOiP9IaOi0ZD4b534u8MvaOWZkC~7UtkhT-XscepA__"
-                  name="Андреев Андрей"
+              img={info?.avatar_url || ''}
+              name={`${info?.last_name} ${info?.first_name}`}
                   key={_}
                 />
               ))}
@@ -799,8 +799,8 @@ const OutComments = (props:IPerepiski)=> {
               {Array.from({ length: 5 }, (e, _) => (
                 <LikeBox
               count={4}
-                  img="https://s3-alpha-sig.figma.com/img/cf30/bc8d/b0be4242116c53ba401676ad1c2e39db?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=PnVWXYOf2RQDPbB9G6IVRnkK1TEMaH7KkKU481RRG0ZABENLv~4TWuis7~GGMs6L7-y~VTWGYNFgF8UKUm1w-1ZhKjhu8YmR1~eWv~bTpVxpSfByReuq8zsRwdtAuHydq2wkLN2wJqvYR58eVVwQmSRzFq~n-BzUfJWyhsuHrLZ-AMFNA8Aoh3QNSsSo7Eg-HQ7kGNQKVKXOGSM3yefZukuRSYurl-E2lLpOoZfYw8wTVCyLMG4sTuW4EHVoiOyA5Z7aWAvp8RQUlPib4ho96rnFLhV2BQC8YTvQWYxdvOR0liOiP9IaOi0ZD4b534u8MvaOWZkC~7UtkhT-XscepA__"
-                  name="Андреев Андрей"
+              img={info?.avatar_url || ''}
+              name={`${info?.last_name} ${info?.first_name}`}
                   key={_}
                 />
               ))}
@@ -879,8 +879,8 @@ const Groups = (props:IPerepiski)=> {
               {Array.from({ length: 5 }, (e, _) => (
                 <GroupsBox
               url="frffarfsfsr"
-                  img="https://s3-alpha-sig.figma.com/img/cf30/bc8d/b0be4242116c53ba401676ad1c2e39db?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=PnVWXYOf2RQDPbB9G6IVRnkK1TEMaH7KkKU481RRG0ZABENLv~4TWuis7~GGMs6L7-y~VTWGYNFgF8UKUm1w-1ZhKjhu8YmR1~eWv~bTpVxpSfByReuq8zsRwdtAuHydq2wkLN2wJqvYR58eVVwQmSRzFq~n-BzUfJWyhsuHrLZ-AMFNA8Aoh3QNSsSo7Eg-HQ7kGNQKVKXOGSM3yefZukuRSYurl-E2lLpOoZfYw8wTVCyLMG4sTuW4EHVoiOyA5Z7aWAvp8RQUlPib4ho96rnFLhV2BQC8YTvQWYxdvOR0liOiP9IaOi0ZD4b534u8MvaOWZkC~7UtkhT-XscepA__"
-                  name="Андреев Андрей"
+              img={info?.avatar_url || ''}
+              name={`${info?.last_name} ${info?.first_name}`}
                   key={_}
                 />
               ))}
@@ -1210,14 +1210,7 @@ console.log(data.avatar_url,`avatar_url`);
   setLoading(false)
  }
 }
-// useEffect(()=> {
-// const data = localStorage.getItem('data');
-// if(data) {
-//   const parsedData = JSON.parse(data) ;
-//   setInfo(parsedData);
 
-//   setLoading(false)
-// }},[])
 
   useEffect(()=> {
 const act = localStorage.getItem('active');
