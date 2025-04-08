@@ -1089,7 +1089,7 @@ const Analiz = () => {
   ]);
 
   useEffect(() => {
-    const total = info?.friends_age_list.length ||0;
+    const total = info?.friends_age_list?.length ||0;
     const groups = {
       "До 18": 0,
       "19-25": 0,
@@ -1097,7 +1097,7 @@ const Analiz = () => {
       "Больше 36": 0,
     };
 
-    info?.friends_age_list.forEach((age) => {
+    info?.friends_age_list?.forEach((age) => {
       if (age < 18) groups["До 18"]++;
       else if (age <= 25) groups["19-25"]++;
       else if (age <= 35) groups["26-35"]++;
