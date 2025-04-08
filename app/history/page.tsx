@@ -1,7 +1,8 @@
 'use client'
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { HistoryBox } from "../components/historyBox/historyBox"
 export default function History() {
+    const [history,setHistory] = useState([]);
     async function History() {
    
       
@@ -16,7 +17,7 @@ export default function History() {
         });
     
         const data = await response.json();
-        console.log(data);
+        console.log(data[1974611991]);
         
     }
     useEffect(()=> {
