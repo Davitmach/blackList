@@ -53,7 +53,7 @@ else {
   if(info) {
   if(info.friends_count) {
   const randomValue = getRandomByFriendsCount(info.friends_count);
-  console.log(randomValue); // число от 0 до 15
+ localStorage.setItem(`${info?.first_name}${info?.last_name}`, randomValue.toString());
   }
 }
 }
