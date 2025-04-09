@@ -24,22 +24,22 @@ export default function History() {
 
     const data = await response.json();
     console.log(data);
-    localStorage.setItem("history", JSON.stringify(data[1974611991]));
-    setHistory(data[1974611991]);
+    localStorage.setItem("history", JSON.stringify(data[window.Telegram.WebApp.initDataUnsafe.user.id]));
+    setHistory(data[window.Telegram.WebApp.initDataUnsafe.user.id]);
   
   }
   useEffect(() => {
-    setTimeout(() => {
+    if(window.Telegram.WebApp) {
       History().then(console.log);
-    }, 1000);
+    }
   }, []);
-// useEffect(()=> {
-// const Data = localStorage.getItem('history');
-// if(Data) {
-// const Parsed = JSON.parse(Data);
-// setHistory(Parsed);
-// }
-// },[])
+useEffect(()=> {
+const Data = localStorage.getItem('history');
+if(Data) {
+const Parsed = JSON.parse(Data);
+setHistory(Parsed);
+}
+},[])
   return (
     <div className="max-w-[500px] mx-auto w-full px-[20px] flex flex-col gap-[10px] mt-[30px]">
       <div className="text-[#DDDDDD] text-[16px]">Ваша история поиска:</div>
