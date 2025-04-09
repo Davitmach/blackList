@@ -33,13 +33,26 @@ export default function History() {
       History().then(console.log);
     }
   }, []);
-useEffect(()=> {
-const Data = localStorage.getItem('history');
-if(Data) {
-const Parsed = JSON.parse(Data);
-setHistory(Parsed);
-}
-},[])
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const data = localStorage.getItem("history");
+        if (data) {
+          const parsed = JSON.parse(data);
+          if (Array.isArray(parsed)) {
+            console.log("Загруженная история:", parsed);
+            setHistory(parsed);
+          } else {
+            console.warn("Ожидался массив, но получено:", parsed);
+          }
+        }
+      } catch (error) {
+        console.error("Ошибка при разборе localStorage:", error);
+      }
+    }
+  }, []);
+  
+  
   return (
     <div className="max-w-[500px] mx-auto w-full px-[20px] flex flex-col gap-[10px] mt-[30px]">
       <div className="text-[#DDDDDD] text-[16px]">Ваша история поиска:</div>
