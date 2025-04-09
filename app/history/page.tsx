@@ -29,9 +29,11 @@ export default function History() {
   
   }
   useEffect(() => {
-    if(window.Telegram.WebApp) {
-      History().then(console.log);
-    }
+   
+     
+    setTimeout(() => {
+      History().then(console.log); 
+    }, 1000);
   }, []);
   useEffect(() => {
     if (typeof window !== "undefined") {
