@@ -54,6 +54,7 @@ else {
   if(info.friends_count) {
   const randomValue = getRandomByFriendsCount(info.friends_count);
  localStorage.setItem(`${info?.first_name}${info?.last_name}`, randomValue.toString());
+ setPresents(randomValue);
   }
 }
 }
