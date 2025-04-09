@@ -36,7 +36,7 @@ export default function History() {
 useEffect(()=> {
 const Data = localStorage.getItem('history');
 if(Data) {
-const Parsed = JSON.parse(Data || '[]');
+const Parsed = JSON.parse(Data);
 setHistory(Parsed);
 }
 },[])
