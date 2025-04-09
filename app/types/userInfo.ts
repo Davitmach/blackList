@@ -6,7 +6,7 @@ export interface IUserInfo {
     like:number;
     views:number;
     comments:number;
-    presents:number;
+  
     reposts:number;
     name:string;
 }

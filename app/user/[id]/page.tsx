@@ -35,7 +35,31 @@ const Tarif = {
   description: 'далее 999₽/10дн.',
      additionalInfo: 'Все функции Премиум на 2 дня!',
 }
+function getRandomByFriendsCount(friendsCount: number): number {
+  if (friendsCount <= 0) return 0;
+
+  // Максимум растёт с количеством друзей, можно задать формулу по желанию
+  const max = Math.floor(friendsCount * 1.5); // или просто friendsCount
+  return Math.floor(Math.random() * (max + 1)); // от 0 до max включительно
+}
 const UserInfo = (props: IUserInfo) => {
+  const [presents,setPresents] = useState<string|number>(0);
+  useEffect(()=> {
+const CheckUser = localStorage.getItem(`${info?.first_name}${info?.last_name}`);
+if(CheckUser) {
+  setPresents(CheckUser);
+}
+else {
+  if(info) {
+  if(info.friends_count) {
+  const randomValue = getRandomByFriendsCount(info.friends_count);
+  console.log(randomValue); // число от 0 до 15
+  }
+}
+}
+  },[])
+
+
   return (
     <div className="w-full flex flex-col gap-[30px]  mt-[30px]">
       <div className="bg-[#8E237333] rounded-[20px] py-[10px] px-[15px] flex gap-[20px]">
@@ -203,7 +227,7 @@ const UserInfo = (props: IUserInfo) => {
                 Подарки
               </div>
               <div className="font-[700] text-[#DDDDDD] text-[22px]">
-                {props.presents}
+                {presents}
               </div>
             </div>
           </div>
@@ -1267,7 +1291,7 @@ if(loading == true) return <Loading/>
         img={info?.avatar_url||''}
         like={info?.total_likes?? 0}
         posts={info?.total_posts?? 0}
-        presents={Math.floor(Math.random() * 201)}
+        
         reposts={info?.total_reposts?? 0}
         subs={info?.followers_count?? 0}
         views={info?.total_views?? 0}
