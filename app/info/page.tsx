@@ -1,9 +1,20 @@
 'use client';
 import { useRouter } from "next/navigation"
 import { PageConfig } from "../config/pages";
+import { useEffect, useState } from "react";
+import { Loading } from "../components/loading/loading";
 
 export default function Info() {
     const { push} = useRouter();
+    const [id,setId] = useState(0);
+    const [isLoading,setLoading] = useState(true);
+    useEffect(()=> {
+setTimeout(() => {
+    setId(window?.Telegram?.WebApp?.initDataUnsafe?.user?.id);
+    setLoading(false);
+}, 1000);
+    },[])
+    if(isLoading == true) return <Loading/>
     return(
         <div className="max-w-[500px] mx-auto w-full flex flex-col gap-[30px] mt-[30px] px-[20px]">
 
