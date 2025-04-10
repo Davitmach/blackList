@@ -26,7 +26,7 @@ setTimeout(() => {
                 <div className="cursor-pointer underline text-[#DDDDDD] font-[500] text-[14px] bg-[#8E237333] rounded-[10px] p-[10px] inline-flex ">Обработка данных</div>
             </div>
             <div className="flex flex-col items-center justify-center gap-[10px] mb-[110px]">
-                <div className="text-[#926C88] text-[14px]">Ваш ID аккаунта: <span className="text-white">{window?.Telegram?.WebApp?.initDataUnsafe?.user?.id}</span></div>
+                <div className="text-[#926C88] text-[14px]">Ваш ID аккаунта: <span className="text-white">{id}</span></div>
                 <div className="text-[#926C88] text-[14px] w-[243px] text-center">ИП ГЛАДУН ДМИТРИЙ ИГОРЕВИЧ
 ОГРН/ОГРНИП: 324330000044268
 ИНН: 332898961784</div>
