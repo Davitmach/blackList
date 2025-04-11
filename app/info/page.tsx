@@ -14,16 +14,19 @@ setTimeout(() => {
     setLoading(false);
 }, 1000);
     },[])
+    const HandleOpen = (link:string)=> {
+        window.open(link, "_blank")
+    }
     if(isLoading == true) return <Loading/>
     return(
         <div className="max-w-[500px] mx-auto w-full flex flex-col gap-[30px] mt-[30px] px-[20px]">
 
             <div className="flex flex-col gap-[10px]">
-                <div className="cursor-pointer underline text-[#DDDDDD] font-[500] text-[14px] bg-[#8E237333] rounded-[10px] p-[10px] inline-flex "><a href="https://blacklistone.ru//docx/pravila.docx" download={true} target="_blank"> Предоставление услуг</a></div>
-                <div className="cursor-pointer underline text-[#DDDDDD] font-[500] text-[14px] bg-[#8E237333] rounded-[10px] p-[10px] inline-flex "><a href="https://blacklistone.ru//docx/rekkurentnie.docx" download={true} target="_blank"> Рекуррентные платежи</a></div>
-                <div className="cursor-pointer underline text-[#DDDDDD] font-[500] text-[14px] bg-[#8E237333] rounded-[10px] p-[10px] inline-flex "><a href="https://blacklistone.ru//docx/dogovor.docx" download={true} target="_blank"> Договор оферты</a></div>
-                <div className="cursor-pointer underline text-[#DDDDDD] font-[500] text-[14px] bg-[#8E237333] rounded-[10px] p-[10px] inline-flex "><a href="https://blacklistone.ru//docx/sokhranenie.docx" download={true} target="_blank"> Сохранение учётных данных</a></div>
-                <div className="cursor-pointer underline text-[#DDDDDD] font-[500] text-[14px] bg-[#8E237333] rounded-[10px] p-[10px] inline-flex "><a href="https://blacklistone.ru//docx/soglasie.docx" download={true} target="_blank"> Обработка данных</a></div>
+                <div onClick={()=>HandleOpen('https://blacklistone.ru//docx/pravila.docx')} className="cursor-pointer underline text-[#DDDDDD] font-[500] text-[14px] bg-[#8E237333] rounded-[10px] p-[10px] inline-flex "> Предоставление услуг</div>
+                <div onClick={()=>HandleOpen('https://blacklistone.ru//docx/rekkurentnie.docx')} className="cursor-pointer underline text-[#DDDDDD] font-[500] text-[14px] bg-[#8E237333] rounded-[10px] p-[10px] inline-flex "> Рекуррентные платежи</div>
+                <div onClick={()=>HandleOpen('https://blacklistone.ru//docx/dogovor.docx')} className="cursor-pointer underline text-[#DDDDDD] font-[500] text-[14px] bg-[#8E237333] rounded-[10px] p-[10px] inline-flex ">Договор оферты</div>
+                <div onClick={()=>HandleOpen('https://blacklistone.ru//docx/sokhranenie.docx')} className="cursor-pointer underline text-[#DDDDDD] font-[500] text-[14px] bg-[#8E237333] rounded-[10px] p-[10px] inline-flex ">Сохранение учётных данных</div>
+                <div onClick={()=>HandleOpen('https://blacklistone.ru//docx/soglasie.docx')} className="cursor-pointer underline text-[#DDDDDD] font-[500] text-[14px] bg-[#8E237333] rounded-[10px] p-[10px] inline-flex ">Обработка данных</div>
             </div>
             <div className="flex flex-col items-center justify-center gap-[10px] mb-[110px]">
                 <div className="text-[#926C88] text-[14px]">Ваш ID аккаунта: <span className="text-white">{id}</span></div>
