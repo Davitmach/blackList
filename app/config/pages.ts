@@ -7,5 +7,6 @@ export const PageConfig = {
     error:'/error',
     user:'/user',
     pay:'/pay',
-    prize:'/prize'
+    prize:'/prize',
+    cancel:'/cancel',
 }

@@ -34,7 +34,9 @@ setTimeout(() => {
 ОГРН/ОГРНИП: 324330000044268
 ИНН: 332898961784</div>
 <div className="text-[#926C88] text-[14px] text-decoration underline cursor-pointer">Служба поддержки</div>
-<div className="text-[#926C88] text-[14px] cursor-pointer">Отмена подписки</div>
+<div className="text-[#926C88] text-[14px] cursor-pointer" onClick={()=> {
+    push(PageConfig.cancel)
+}}>Отмена подписки</div>
 <div className="text-[#926C88] text-[14px] cursor-pointer" onClick={()=> {
     push(PageConfig.analiz)
 }}>Как происходит анализ</div>
