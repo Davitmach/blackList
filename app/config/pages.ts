@@ -9,4 +9,5 @@ export const PageConfig = {
     pay:'/pay',
     prize:'/prize',
     cancel:'/cancel',
+    cancel2:'/cancel2',
 }
