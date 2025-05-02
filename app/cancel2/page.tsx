@@ -3,13 +3,31 @@ import { useState } from "react";
 
 export default function Page() {
         const [active,setActive] = useState(false);
+        async function Cancel() {
+            const response = await fetch(
+              "https://blacklistone.ru/api/subs/cancel_subscription",
+              {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                  "X-Telegram-InitData": window.Telegram.WebApp.initData, // Заголовок остается без изменений
+                },
+              }
+            );
+        
+            const data = await response.json();
+            console.log(data);
+           
+           
+          
+          }
     return(
         <>
          <div className="max-w-[500px] pb-[120px] mx-auto w-full px-[20px] flex flex-col items-center gap-[15px] mt-[30px]">
                     <div className="w-full flex justify-start"><h1 className="text-[#DDDDDD] text-[15px] font-[500]">Если вы временно не планируете пользоваться преимуществами подписки, вы можете её приостановить, а мы сохраним все оплаченные дни.</h1></div>
                     <div className="flex flex-col gap-[15px] items-center justify-center max-w-[269px] w-full">
                        
-                       <button onClick={()=> {setActive(true)}} className="cursor-pointer leading-none h-[34px] text-[#BBBBBB] font-[700] text-[12px] py-[10px] w-full border-[2px] border-[#BBBBBB] rounded-[50px] bg-transparent">Приостановить подписку</button>
+                       <button onClick={()=> {setActive(true);Cancel()}} className="cursor-pointer leading-none h-[34px] text-[#BBBBBB] font-[700] text-[12px] py-[10px] w-full border-[2px] border-[#BBBBBB] rounded-[50px] bg-transparent">Приостановить подписку</button>
                    </div>
                     <div><p className="text-[#926C88] text-[14px] font-[400]">Подробнее о том, как работает услуга приостановки подписке можно узнать в Публичной Оферте и Тарифах.</p></div>
                     <div><p className="text-[#926C88] text-[14px] font-[400]">В соответствии с Публичной Офертой, функциональная возможность приостановки подписки производится 1 раз сроком на 7 календарных дней, после чего любой из выбранного ранее тарифов снова становится необходимым к оплате.</p></div>
