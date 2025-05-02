@@ -7,7 +7,7 @@ export default function Page() {
             const response = await fetch(
               "https://blacklistone.ru/api/subs/cancel_subscription",
               {
-                method: "GET",
+                method: "POST",
                 headers: {
                   "Content-Type": "application/json",
                   "X-Telegram-InitData": window.Telegram.WebApp.initData, // Заголовок остается без изменений
