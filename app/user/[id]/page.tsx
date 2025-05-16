@@ -1252,6 +1252,8 @@ const response = await fetch("https://blacklistone.ru/api/subs/current_subscript
       return text;
     }
     else {
+      console.log(123132321);
+      
       push('/')
     }
     
