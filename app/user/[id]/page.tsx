@@ -1214,8 +1214,7 @@ interface UserProfile {
 
 async function Analyz(url:{url:string}) {
 
-  console.log(url);
-  
+
 
   const response = await fetch("https://blacklistone.ru/api/vk/analyze", { 
       method: "POST",
@@ -1248,6 +1247,7 @@ const response = await fetch("https://blacklistone.ru/api/subs/current_subscript
     const text = response.text();
     if(text) {
       setTarif(text)
+      return text;
     }
     
   }
