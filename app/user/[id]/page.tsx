@@ -1210,7 +1210,7 @@ interface UserProfile {
   last_name: string;
 }
 
-  
+  const [tarif,setTarif] = useState<any>('');
 
 async function Analyz(url:{url:string}) {
 
@@ -1246,7 +1246,9 @@ const response = await fetch("https://blacklistone.ru/api/subs/current_subscript
   });
   if(response.ok) {
     const text = response.text();
-    console.log(text);
+    if(text) {
+      setTarif(text)
+    }
     
   }
   
@@ -1315,17 +1317,17 @@ if(loading == true) return <Loading/>
         subs={info?.followers_count?? 0}
         views={info?.total_views?? 0}
       />
-      <Perepiski active={active} />
-      <Poslania active={active}/>
+      <Perepiski active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false} />
+      <Poslania active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
       <Analiz/>
-      <Aktivonst active={active}/>
-      <Friends active={active}/>
-      <Likes active={active}/>
-      <OutLikes active={active}/>
-      <Comments active={active}/>
-      <OutComments active={active}/>
-      <Groups active={active}/>
-      <Result active={active}/>
+      <Aktivonst active={tarif =='Пробный' ? true: tarif =='Эконом'? true:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
+      <Friends active={tarif =='Пробный' ? true: tarif =='Эконом'? true:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
+      <Likes active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
+      <OutLikes active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
+      <Comments active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
+      <OutComments active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
+      <Groups active={tarif =='Пробный' ? true: tarif =='Эконом'? true:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
+      <Result active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
       <Up/>
     </div>
     </Suspense>
