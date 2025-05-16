@@ -1246,7 +1246,7 @@ const response = await fetch("https://blacklistone.ru/api/subs/current_subscript
 
   });
   if(response.ok) {
-    const text = response.text();
+    const text = await response.text();
     if(text) {
       console.log(text,'qaqdeidiaedaiaejdaeidjaeiaed');
       
