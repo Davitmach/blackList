@@ -16,7 +16,7 @@ if(tarif) {
 },[searchParams])
 const pay =async ()=> {
      const response = await fetch(
-              "https://blacklistone.ru/api/payments_create_payment",
+              "https://blacklistone.ru/api/payments/create_payment",
               {
                 method: "POST",
                 body: JSON.stringify({
