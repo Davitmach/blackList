@@ -28,7 +28,9 @@ const pay =async ()=> {
                 },
               }
             );
-            console.log(response);
+            if(typeof response == 'string') {
+                window.open(response, "_blank");
+            }
             
 }
     return(
