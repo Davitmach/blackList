@@ -30,22 +30,26 @@ const pay = async () => {
       }
     );
 
-    // `response.ok` ДОЛЖЕН существовать
-    if (response.ok) {
-      const url = await response.text(); // Получаем URL как строку
-      if (url.startsWith("http")) {
-        window.open(url, "_blank");
-      } else {
-        console.error("Некорректный URL:", url);
-      }
-    } else {
+    if (!response.ok) {
       const errorText = await response.text();
-      console.error("Ошибка ответа от сервера:", errorText);
+      console.error("Ошибка от сервера:", errorText);
+      return;
     }
-  } catch (err) {
-    console.error("Ошибка запроса:", err);
+
+    const url = await response.text();
+    console.log("Полученный URL:", url);
+
+    if (url.startsWith("http")) {
+      // Используем метод Telegram WebApp для открытия ссылки
+      Telegram.WebApp.openLink(url);
+    } else {
+      console.error("Некорректный URL:", url);
+    }
+  } catch (error) {
+    console.error("Ошибка запроса:", error);
   }
 };
+
 
     return(
        <div className="max-w-[500px] mx-auto w-full mt-[30px] px-[20px] flex flex-col gap-[30px]">
