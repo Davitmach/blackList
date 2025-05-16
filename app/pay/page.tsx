@@ -39,12 +39,10 @@ const pay = async () => {
     const url = await response.text();
     console.log("Полученный URL:", url);
 
-    if (url.startsWith("http")) {
-      // Используем метод Telegram WebApp для открытия ссылки
+   
+  
       Telegram.WebApp.openLink(url);
-    } else {
-      console.error("Некорректный URL:", url);
-    }
+
   } catch (error) {
     console.error("Ошибка запроса:", error);
   }
