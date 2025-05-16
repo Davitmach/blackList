@@ -1234,6 +1234,8 @@ console.log(data.avatar_url,`avatar_url`);
   setLoading(false)
  }
 }
+
+const { push} = useRouter()
 async function CheckTarif() {
 const response = await fetch("https://blacklistone.ru/api/subs/current_subscription", { 
       method: "POST",
@@ -1248,6 +1250,9 @@ const response = await fetch("https://blacklistone.ru/api/subs/current_subscript
     if(text) {
       setTarif(text)
       return text;
+    }
+    else {
+      push('/')
     }
     
   }

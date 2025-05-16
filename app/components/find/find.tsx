@@ -12,58 +12,41 @@ export const Find = () => {
     // Регулярное выражение для валидации и извлечения ID из ссылки на ВКонтакте
     const validateUrl = (url: string) => {
         try {
+            // Удаляем параметры после ?
             const cleanUrl = url.split('?')[0];
+    
+            // Поддержка ссылок без https://
             const normalizedUrl = cleanUrl.startsWith('http') ? cleanUrl : `https://${cleanUrl}`;
+    
             const parsedUrl = new URL(normalizedUrl);
-
+    
             if (parsedUrl.hostname !== 'vk.com' && parsedUrl.hostname !== 'www.vk.com') {
                 return null;
             }
-
-            const path = parsedUrl.pathname.slice(1);
-            const valid = /^[a-zA-Z0-9_.]+$/.test(path);
+    
+            const path = parsedUrl.pathname.slice(1); // удаляем начальный "/"
+            const valid = /^[a-zA-Z0-9_.]+$/.test(path); // проверка на допустимые символы
+    
             return valid ? path : null;
         } catch {
             return null;
         }
     };
 
-    const HandleFind = async () => {
+    const HandleFind = () => {
         if (ref.current) {
             const value = ref.current.value.trim();
-
+    
             if (value === '') {
                 setError('Пожалуйста, введите ссылку.');
-                return;
-            }
-
-            const userIdOrUsername = validateUrl(value);
-            if (!userIdOrUsername) {
-                setError('Неверный формат ссылки ВКонтакте.');
-                return;
-            }
-
-            setError(null);
-
-            try {
-                const response = await fetch("https://blacklistone.ru/api/subs/current_subscription", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "X-Telegram-InitData": window.Telegram.WebApp.initData
-                    },
-                });
-
-                const data = await response.json();
-
-                if (data) {
-                    push(`${PageConfig.user}/${userIdOrUsername}`);
+            } else {
+                const userIdOrUsername = validateUrl(value);
+                if (!userIdOrUsername) {
+                    setError('Неверный формат ссылки ВКонтакте.');
                 } else {
-                    setError('Доступ запрещён: нет активной подписки.');
+                    setError(null);
+                    push(`${PageConfig.user}/${userIdOrUsername}`);
                 }
-            } catch (err) {
-                console.error('Ошибка при запросе подписки:', err);
-                setError('Ошибка при проверке подписки. Попробуйте позже.');
             }
         }
     };
