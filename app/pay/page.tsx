@@ -14,25 +14,39 @@ if(tarif) {
     setData(tarif)
 }
 },[searchParams])
-const pay =async ()=> {
-     const response = await fetch(
-              "https://blacklistone.ru/api/payments/create_payment",
-              {
-                method: "POST",
-                body: JSON.stringify({
-                    tariff:tarif.name
-                }),
-                headers: {
-                  "Content-Type": "application/json",
-                  "X-Telegram-InitData": window.Telegram.WebApp.initData,
-                },
-              }
-            );
-            if(typeof response == 'string') {
-                window.open(response, "_blank");
-            }
-            
-}
+const pay = async () => {
+  try {
+    const response = await fetch(
+      "https://blacklistone.ru/api/payments/create_payment",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          tariff: tarif.name,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          "X-Telegram-InitData": window.Telegram.WebApp.initData,
+        },
+      }
+    );
+
+    // `response.ok` ДОЛЖЕН существовать
+    if (response.ok) {
+      const url = await response.text(); // Получаем URL как строку
+      if (url.startsWith("http")) {
+        window.open(url, "_blank");
+      } else {
+        console.error("Некорректный URL:", url);
+      }
+    } else {
+      const errorText = await response.text();
+      console.error("Ошибка ответа от сервера:", errorText);
+    }
+  } catch (err) {
+    console.error("Ошибка запроса:", err);
+  }
+};
+
     return(
        <div className="max-w-[500px] mx-auto w-full mt-[30px] px-[20px] flex flex-col gap-[30px]">
         <div className="flex flex-col gap-[25px]">
