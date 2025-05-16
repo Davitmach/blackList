@@ -20,7 +20,7 @@ const pay =async ()=> {
               {
                 method: "POST",
                 body: JSON.stringify({
-                    tarif:tarif.name
+                    tariff:tarif.name
                 }),
                 headers: {
                   "Content-Type": "application/json",
