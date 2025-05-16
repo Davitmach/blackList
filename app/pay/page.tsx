@@ -1,12 +1,13 @@
 'use client'
-import { useEffect, useState,Suspense } from 'react';
+import { useEffect, useState,Suspense, useRef } from 'react';
 import './style.scss';
 import { useSearchParams } from 'next/navigation';
 function PayPageContent() {
     const searchParams = useSearchParams();
     const [data,setData] = useState<any>();
     const tarifParam = searchParams.get("tarif");
-
+const ref1 =useRef<HTMLInputElement>(null);
+const ref2 = useRef<HTMLInputElement>(null);
     const tarif = tarifParam ? JSON.parse(decodeURIComponent(tarifParam)) : null;
 useEffect(()=> {
 if(tarif) {
@@ -15,6 +16,7 @@ if(tarif) {
 }
 },[searchParams])
 const pay = async () => {
+    if(!ref1.current?.checked || !ref2.current?.checked) return
   try {
     const response = await fetch(
       "https://blacklistone.ru/api/payments/create_payment",
@@ -113,11 +115,11 @@ const pay = async () => {
         <div><button onClick={pay} className="border-[2px] rounded-[50px] w-full py-[10px] cursor-pointer border-[#BBBBBB] text-[#BBBBBB] font-[700] text-[12px]">Подписаться за 14₽</button></div>
         <div className="flex flex-col gap-[10px]">
             <div className="flex gap-[10px]">
-                <div><input type='checkbox'/></div>
+                <div><input ref={ref1} type='checkbox'/></div>
                 <div className="text-[#926C88] text-[12px] font-[400] pol">Согласен с <span>договором офертой</span>, <span>политикой обработки персональных данных</span>, <span>правилам представления услуг по подписке</span>, <span>офертой рекурентных платежей </span>и <span>договором сохроанения учётных данных.</span></div>
             </div>
             <div className="flex gap-[10px]">
-                <div><input type='checkbox'/></div>
+                <div><input ref={ref2} type='checkbox'/></div>
                 <div className="text-[#926C88] text-[12px] font-[400] pol">Согласен с <span>договором офертой</span>, <span>политикой обработки персональных данных</span>, <span>правилам представления услуг по подписке</span>, <span>офертой рекурентных платежей </span>и <span>договором сохроанения учётных данных.</span></div>
             </div>
         </div>
