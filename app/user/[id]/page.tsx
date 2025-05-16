@@ -1248,13 +1248,12 @@ const response = await fetch("https://blacklistone.ru/api/subs/current_subscript
   if(response.ok) {
     const text = response.text();
     if(text) {
+      console.log(text,'qaqdeidiaedaiaejdaeidjaeiaed');
+      
       setTarif(text)
       return text;
     }
-   if(text == null) {
-    console.log('qaqem vreat daedeaudaeaiedjaeidajed');
-    
-   }
+   
   }
   
 
