@@ -41,7 +41,7 @@ const pay = async () => {
 
    
   
-      Telegram.WebApp.openLink(url);
+      window.open(url,'_blank');
 
   } catch (error) {
     console.error("Ошибка запроса:", error);
