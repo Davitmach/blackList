@@ -14,7 +14,23 @@ if(tarif) {
     setData(tarif)
 }
 },[searchParams])
-
+const pay =async ()=> {
+     const response = await fetch(
+              "https://blacklistone.ru/api/payments_create_payment",
+              {
+                method: "POST",
+                body: JSON.stringify({
+                    tarif:tarif
+                }),
+                headers: {
+                  "Content-Type": "application/json",
+                  "X-Telegram-InitData": window.Telegram.WebApp.initData,
+                },
+              }
+            );
+            console.log(response);
+            
+}
     return(
        <div className="max-w-[500px] mx-auto w-full mt-[30px] px-[20px] flex flex-col gap-[30px]">
         <div className="flex flex-col gap-[25px]">
@@ -75,7 +91,7 @@ if(tarif) {
                 <div className='text-[#926C88] text-[12px]'>Анализ групп и сообществ</div>
             </div>
         </div>
-        <div><button className="border-[2px] rounded-[50px] w-full py-[10px] cursor-pointer border-[#BBBBBB] text-[#BBBBBB] font-[700] text-[12px]">Подписаться за 14₽</button></div>
+        <div><button onClick={pay} className="border-[2px] rounded-[50px] w-full py-[10px] cursor-pointer border-[#BBBBBB] text-[#BBBBBB] font-[700] text-[12px]">Подписаться за 14₽</button></div>
         <div className="flex flex-col gap-[10px]">
             <div className="flex gap-[10px]">
                 <div><input type='checkbox'/></div>
