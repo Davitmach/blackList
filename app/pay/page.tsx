@@ -36,7 +36,8 @@ const pay = async () => {
       return;
     }
 
-    const url = await response.text();
+   let rawUrl = await response.text();
+ const url = rawUrl.replace(/^"|"$/g, "");
     console.log("Полученный URL:", url);
 
    
