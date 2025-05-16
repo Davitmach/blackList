@@ -1235,6 +1235,23 @@ console.log(data.avatar_url,`avatar_url`);
   setLoading(false)
  }
 }
+async function CheckTarif() {
+const response = await fetch("https://blacklistone.ru/api/subs/current_subscription", { 
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          "X-Telegram-InitData": window.Telegram.WebApp.initData 
+      },
+
+  });
+  if(response.ok) {
+    const text = response.text();
+    console.log(text);
+    
+  }
+  
+
+}
 
 
   useEffect(()=> {
@@ -1267,6 +1284,7 @@ useEffect(()=> {
 if(link.url !=='') {
   setTimeout(() => {
     Analyz(link)    
+    CheckTarif()
   }, 1000);
 
 }
