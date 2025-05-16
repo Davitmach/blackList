@@ -1249,7 +1249,9 @@ const response = await fetch("https://blacklistone.ru/api/subs/current_subscript
     const text = await response.text();
     if(text) {
       console.log(text,'qaqdeidiaedaiaejdaeidjaeiaed');
-      
+      if(text =='null') {
+        push('/')
+      }
       setTarif(text)
       return text;
     }
