@@ -1251,12 +1251,10 @@ const response = await fetch("https://blacklistone.ru/api/subs/current_subscript
       setTarif(text)
       return text;
     }
-    else {
-      console.log(123132321);
-      
-      push('/')
-    }
+   if(text == null) {
+    console.log('qaqem vreat daedeaudaeaiedjaeidajed');
     
+   }
   }
   
 
