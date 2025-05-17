@@ -1307,6 +1307,11 @@ useEffect(()=> {
   console.log(loading,'loading');
   
   },[loading])
+
+  useEffect(()=> {
+console.log(tarif,'qaqaqem');
+
+  },[tarif])
 if(loading == true) return <Loading/>
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -1327,7 +1332,7 @@ if(loading == true) return <Loading/>
       <Poslania active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
       <Analiz/>
       <Aktivonst active={tarif =='Пробный' ? true: tarif =='Эконом'? true:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
-      <Friends active={tarif =='Пробный' ? true: tarif =='Эконом'? true:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
+      <Friends active={tarif =="Пробный" ? true: tarif =='Эконом'? true:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
       <Likes active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
       <OutLikes active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
       <Comments active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
