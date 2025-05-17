@@ -43,8 +43,8 @@ const pay = async () => {
     console.log("Полученный URL:", url);
 
    
-//   window.location.href = url
-    //   window.open(url,'_blank');
+  window.location.href = url
+
 
   } catch (error) {
     console.error("Ошибка запроса:", error);
