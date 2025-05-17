@@ -23,7 +23,7 @@ export default function History() {
     );
 
     const data = await response.json();
-    console.log(data);
+ 
     localStorage.setItem("history", JSON.stringify(data[window.Telegram.WebApp.initDataUnsafe.user.id]));
     setHistory(data[window.Telegram.WebApp.initDataUnsafe.user.id]);
   
@@ -32,7 +32,7 @@ export default function History() {
    
      
     setTimeout(() => {
-      History().then(console.log); 
+      History()
     }, 1000);
   }, []);
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function History() {
         if (data) {
           const parsed = JSON.parse(data);
           if (Array.isArray(parsed)) {
-            console.log("Загруженная история:", parsed);
+          
             setHistory(parsed);
           } else {
             console.warn("Ожидался массив, но получено:", parsed);

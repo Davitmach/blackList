@@ -11,7 +11,7 @@ const ref2 = useRef<HTMLInputElement>(null);
     const tarif = tarifParam ? JSON.parse(decodeURIComponent(tarifParam)) : null;
 useEffect(()=> {
 if(tarif) {
-    console.log(tarif);   
+
     setData(tarif)
 }
 },[searchParams])
@@ -40,7 +40,7 @@ const pay = async () => {
 
    let rawUrl = await response.text();
  const url = rawUrl.replace(/^"|"$/g, "");
-    console.log("Полученный URL:", url);
+
 
    
   window.location.href = url

@@ -1226,8 +1226,7 @@ async function Analyz(url:{url:string}) {
   });
 const data = await response.json();
  if(data) {
-console.log(JSON.stringify(data),'data');
-console.log(data.avatar_url,`avatar_url`);
+
 
   setInfo(data);
   localStorage.setItem('data',JSON.stringify(data))
@@ -1248,7 +1247,7 @@ const response = await fetch("https://blacklistone.ru/api/subs/current_subscript
   if(response.ok) {
     const text = await response.text();
     if(text) {
-      console.log(text,'qaqdeidiaedaiaejdaeidjaeiaed');
+
       if(text =='null') {
         push('/')
       }
@@ -1275,8 +1274,7 @@ else {
 
   const searchParams = useParams()
   useEffect(() => {
-    console.log('setLIBK');
-    
+ 
     const id = searchParams.id as string; // Получаем параметр 'id'
     
     if (id) {
@@ -1300,13 +1298,10 @@ if(link.url !=='') {
 },[link])
   
 useEffect(()=> {
-console.log(info,'info'); 
+
 
 },[info])
-useEffect(()=> {
-  console.log(loading,'loading');
-  
-  },[loading])
+
 
   useEffect(()=> {
 console.log(tarif,'qaqaqem');
