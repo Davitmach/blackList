@@ -389,7 +389,7 @@ return () => document.removeEventListener('keydown',HandlePress)
     return (
         <div className="max-w-[500px] mx-auto ">
             <div className="w-full flex justify-center flex-col items-center gap-[10px] mt-[30px]">
-                <div className="w-[113px] h-[150px] bg-[#D9D9D9]"></div>
+                <div className="w-[153px] h-[150px] "><img src='/tarifsigma.svg' className='w-full h-full object-cover'/></div>
                 <div className="text-[#DDDDDD] font-[500] text-[22px]">{activeTarif.name}</div>
                 <div className="text-[#926C88] font-[300] text-[14px] text-center">{activeTarif.additionalInfo}</div>
             </div>
