@@ -428,104 +428,153 @@ const tarifsPrices: Record<Tarifs, TarifInfo> = {
 
 
 export default function Tarif() {
-    const [activeTarif, setActiveTarif] = useState<TarifInfo>(tarifsPrices['Пробный']);
-    const [translate,setTranslate] = useState<number>(0);
-const ref = useRef<HTMLDivElement>(null);
+  const [activeTarif, setActiveTarif] = useState<TarifInfo>(tarifsPrices['Пробный']);
+  const [translate, setTranslate] = useState<number>(0);
+  const ref = useRef<HTMLDivElement>(null);
 
-    const changeTarif = (tarif: Tarifs) => {
-        setActiveTarif(tarifsPrices[tarif]);
+  const changeTarif = (tarif: Tarifs) => {
+    setActiveTarif(tarifsPrices[tarif]);
+  };
+
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  useEffect(() => {
+    const checkTouchDevice = () => {
+      const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      setIsTouchDevice(isTouch);
     };
 
-    const [isTouchDevice, setIsTouchDevice] = useState(false);
-    useEffect(() => {
-        const checkTouchDevice = () => {
-          const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-          setIsTouchDevice(isTouch);
-        };
-    
-        checkTouchDevice();
-        window.addEventListener('resize', checkTouchDevice);
-        return () => window.removeEventListener('resize', checkTouchDevice);
-      }, []);
-      const HandlePress = (e: KeyboardEvent) => {
+    checkTouchDevice();
+    window.addEventListener('resize', checkTouchDevice);
+    return () => window.removeEventListener('resize', checkTouchDevice);
+  }, []);
 
+  const HandlePress = (e: KeyboardEvent) => {
+    if (e.key === 'ArrowLeft') {
+      setTranslate((prev) => Math.min(prev + 40, 0));
+    } else if (e.key === 'ArrowRight') {
+      setTranslate((prev) => {
+        if (!ref.current) return prev;
+        const containerWidth = ref.current.offsetWidth;
+        const contentWidth = ref.current.scrollWidth;
+        const maxTranslate = containerWidth - contentWidth; // отрицательное число
 
-        if (e.key === 'ArrowLeft') {
-          
-            setTranslate((prev) => Math.min(prev + 40, 0)); 
-        } else if (e.key === 'ArrowRight') {
-           
-            setTranslate((prev) => Math.max(prev-40,-540)); 
-        }
-    };
+        return Math.max(prev - 40, maxTranslate);
+      });
+    }
+  };
 
-  
-      useEffect(()=> {
-document.addEventListener('keydown',HandlePress)
-return () => document.removeEventListener('keydown',HandlePress)
+  useEffect(() => {
+    document.addEventListener('keydown', HandlePress);
+    return () => document.removeEventListener('keydown', HandlePress);
+  }, []);
 
-      },[])
+  const activeTarifIndex = Object.values(tarifsPrices).findIndex(
+    (tarif) => tarif.name === activeTarif.name
+  );
 
-      const activeTarifIndex = Object.values(tarifsPrices).findIndex(
-        (tarif) => tarif.name === activeTarif.name
-    );
+  // Автоматическая установка translate для ПК
+  useEffect(() => {
+    if (!isTouchDevice && ref.current) {
+      const containerWidth = ref.current.offsetWidth;
+      const contentWidth = ref.current.scrollWidth;
 
-    useEffect(() => {
-        if (!isTouchDevice) {
-            const itemWidth = 120;  
-            const gap = 20;     
-            const offset = -(activeTarifIndex * (itemWidth + gap));
-            setTranslate(Math.max(offset,-540));
-        }
-    }, [activeTarif, isTouchDevice]);
+      const itemWidth = 120;
+      const gap = 20;
+      const offset = -(activeTarifIndex * (itemWidth + gap));
+      const maxTranslate = containerWidth - contentWidth; // отрицательное число
 
-    useEffect(() => {
-        if (ref.current) {
-            const itemWidth = 120;
-            const gap = 20;
-            const offset = -(activeTarifIndex * (itemWidth + gap));
-            ref.current.scrollTo({
-                left: Math.max(-offset, -540),
-                behavior: "smooth" // Плавный скролл
-            });
-        }
-    }, [activeTarif, isTouchDevice]);
-    return (
-        <div className="max-w-[600px] mx-auto ">
-            <div className="w-full flex justify-center flex-col items-center gap-[10px] mt-[30px]">
-                <div className="w-[153px] h-[180px] "><img alt='3' width={113} height={150}    src='/tarif.png' className='w-full h-full object-cover'/></div>
-                <div className="text-[#DDDDDD] font-[500] text-[22px]">{activeTarif.name}</div>
-                <div className="text-[#926C88] font-[300] text-[14px] text-center">{activeTarif.additionalInfo}</div>
-            </div>
-           {isTouchDevice == true ?  <div className={`flex gap-[20px] w-full overflow-x-auto px-[20px] mt-[30px] Scroll_Container duration-[.4s] `} ref={ref}>
-                 {Object.entries(tarifsPrices).map(([key, tarif]) => (
-                    <div onClick={()=> changeTarif(tarif.name)} key={key} className={`${tarif.name == activeTarif.name ? 'Tarif_Active' : 'Tarif_Disable'} cursor-pointer w-[120px] h-[120px]  rounded-[20px] justify-center flex flex-col items-center px-[10px] py-[24.5px] gap-[10px] flex-shrink-0`}>
-                        <div className="text-[#DDDDDD] font-[500] text-[14px] ">{tarif.name}</div>
-                        <div className="text-[#DDDDDD] font-[500] text-[18px]">{tarif.price}₽</div>
-                        <div className="text-nowrap text-[#AAAAAA] text-[12px] font-[300]">{tarif.description}</div>
-                    </div>
-                 )) }
-            </div> :
-            
-            <div className=' relative mt-[30px] px-[20px] overflow-x-hidden ' >
-<div style={{transform:`translateX(${translate}px)`}} className={`duration-[.4s] flex gap-[20px]  `}      >
-{Object.entries(tarifsPrices).map(([key, tarif]) => (
-                    <div onClick={()=> changeTarif(tarif.name)} key={key} className={`${tarif.name == activeTarif.name ? 'Tarif_Active' : 'Tarif_Disable'} cursor-pointer w-[120px] h-[120px]  rounded-[20px] justify-center flex flex-col items-center px-[10px] py-[24.5px] gap-[10px] flex-shrink-0`}>
-                        <div className="text-[#DDDDDD] font-[500] text-[14px] ">{tarif.name}</div>
-                        <div className="text-[#DDDDDD] font-[500] text-[18px]">{tarif.price}₽</div>
-                        <div className="text-nowrap text-[#AAAAAA] text-[12px] font-[300]">{tarif.description}</div>
-                    </div>
-                 )) }
-</div>
-            </div>
-            }
-           
-            <div className='px-[20px] mt-[30px] w-full flex flex-col gap-[10px] pb-[100px]'>
-                {activeTarif.func ? activeTarif.func() :''}
-            </div>
-            <BuyTarif activeTarif={activeTarif} />
-            
-           
+      setTranslate(Math.max(offset, maxTranslate));
+    }
+  }, [activeTarif, isTouchDevice]);
+
+  // Скролл для тач-устройств
+  useEffect(() => {
+    if (ref.current && isTouchDevice) {
+      const containerWidth = ref.current.offsetWidth;
+      const contentWidth = ref.current.scrollWidth;
+
+      const itemWidth = 120;
+      const gap = 20;
+      const offset = -(activeTarifIndex * (itemWidth + gap));
+      const maxScroll = contentWidth - containerWidth;
+
+      ref.current.scrollTo({
+        left: Math.min(-offset, maxScroll),
+        behavior: 'smooth',
+      });
+    }
+  }, [activeTarif, isTouchDevice]);
+
+  return (
+    <div className="max-w-[500px] mx-auto ">
+      <div className="w-full flex justify-center flex-col items-center gap-[10px] mt-[30px]">
+        <div className="w-[153px] h-[180px] ">
+          <img
+            alt="3"
+            width={113}
+            height={150}
+            src="/tarif.png"
+            className="w-full h-full object-cover"
+          />
         </div>
-    );
+        <div className="text-[#DDDDDD] font-[500] text-[22px]">{activeTarif.name}</div>
+        <div className="text-[#926C88] font-[300] text-[14px] text-center">
+          {activeTarif.additionalInfo}
+        </div>
+      </div>
+
+      {isTouchDevice ? (
+        <div
+          className={`flex gap-[20px] w-full overflow-x-auto px-[20px] mt-[30px] Scroll_Container duration-[.4s]`}
+          ref={ref}
+        >
+          {Object.entries(tarifsPrices).map(([key, tarif]) => (
+            <div
+              onClick={() => changeTarif(tarif.name)}
+              key={key}
+              className={`${
+                tarif.name === activeTarif.name ? 'Tarif_Active' : 'Tarif_Disable'
+              } cursor-pointer w-[120px] h-[120px]  rounded-[20px] justify-center flex flex-col items-center px-[10px] py-[24.5px] gap-[10px] flex-shrink-0`}
+            >
+              <div className="text-[#DDDDDD] font-[500] text-[14px] ">{tarif.name}</div>
+              <div className="text-[#DDDDDD] font-[500] text-[18px]">{tarif.price}₽</div>
+              <div className="text-nowrap text-[#AAAAAA] text-[12px] font-[300]">
+                {tarif.description}
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="relative mt-[30px] px-[20px] overflow-x-hidden ">
+          <div
+            style={{ transform: `translateX(${translate}px)` }}
+            className={`duration-[.4s] flex gap-[20px] `}
+            ref={ref}
+          >
+            {Object.entries(tarifsPrices).map(([key, tarif]) => (
+              <div
+                onClick={() => changeTarif(tarif.name)}
+                key={key}
+                className={`${
+                  tarif.name === activeTarif.name ? 'Tarif_Active' : 'Tarif_Disable'
+                } cursor-pointer w-[120px] h-[120px]  rounded-[20px] justify-center flex flex-col items-center px-[10px] py-[24.5px] gap-[10px] flex-shrink-0`}
+              >
+                <div className="text-[#DDDDDD] font-[500] text-[14px] ">{tarif.name}</div>
+                <div className="text-[#DDDDDD] font-[500] text-[18px]">{tarif.price}₽</div>
+                <div className="text-nowrap text-[#AAAAAA] text-[12px] font-[300]">
+                  {tarif.description}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div className="px-[20px] mt-[30px] w-full flex flex-col gap-[10px] pb-[100px]">
+        {activeTarif.func ? activeTarif.func() : ''}
+      </div>
+
+      <BuyTarif activeTarif={activeTarif} />
+    </div>
+  );
 }

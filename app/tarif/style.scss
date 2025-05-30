@@ -14,4 +14,5 @@ border: 1px solid #8E237380;
 
 .Scroll_Container::-webkit-scrollbar {
     display: none; /* Для Chrome, Safari и других WebKit-браузеров */
+    width: 0;
 }
