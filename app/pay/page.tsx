@@ -67,7 +67,7 @@ const pay = async () => {
                     <div className="text-[#DDDDDD] font-[500] text-[24px]">{data?.price && data.price}₽</div>
                     {data?.name == 'Пробный'&&<div className="text-[#926C88] text-[16px]">999₽</div>}
                 </div>
-                <div className="top-[-15px] left-[20px] absolute text-[#FFFFFF] text-[16px] bg-[#926C88] rounded-[20px] inline-flex py-[5px] px-[10px]">{data?.day ? `${data?.day} дня` :data?.hour&&`${data.hour} часа`  }</div>
+                {data?.day || data?.hour && <div className="top-[-15px] left-[20px] absolute text-[#FFFFFF] text-[16px] bg-[#926C88] rounded-[20px] inline-flex py-[5px] px-[10px]">{data?.day ? `${data?.day} дня` :data?.hour&&`${data.hour} часа`  }</div>}
             </div>
         </div>
         <div className='flex gap-[30px]'>
