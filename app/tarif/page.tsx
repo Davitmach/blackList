@@ -10,7 +10,14 @@ export type TarifInfo = {
     price: number;
     description:string;
     additionalInfo?: string; 
-    func?:Function
+    func?:Function,
+    day?:number,
+    hour?:number,
+    innerInfo:{
+      1:string,
+      2:string,
+      3?:string
+    }
 };
 const Probni = ()=> {
     return(
@@ -370,41 +377,77 @@ const tarifsPrices: Record<Tarifs, TarifInfo> = {
     'Пробный': {
         name: 'Пробный',
         price: 14,
+        innerInfo:{
+          1:'Все функции',
+          2:'Премиум за 14р!',
+          3:"Далее - 999 \ 10 дней."
+        },
         description: 'далее 999₽/10дн.',
            additionalInfo: 'Все функции Премиум на 2 дня!',
-           func:Probni
+           func:Probni,
+           day:2
     },
     'Эконом': {
         name: 'Эконом',
         price: 199,
+         innerInfo:{
+          1:'Самый доступный',
+          2:'вариант специально',
+          3:'для тебя!'
+        },
         description: '199₽/2 дня.',
         additionalInfo: 'Самый доступный вариант специально для тебя!',
-        func:Eco
+        func:Eco,
+        day:2
     },
     'Разовый': {
         name: 'Разовый',
         price: 499,
+          innerInfo:{
+          1:'Весь функционал',
+          2:'сервиса без',
+          3:'подписки!'
+        },
         description: 'Доступ 24 ч.',
           additionalInfo: 'Полный доступ без оформления подписки!',
-          func:Razovi
+          func:Razovi,
+          hour:24
     },
     'Премиум': {
         name: 'Премиум',
         price: 999,
+          innerInfo:{
+          1:'Все функции',
+          2:'сервиса! Супер',
+          3:'цена за 10 дней!'
+        },
         description: '10 дней.',
           additionalInfo:'Все функции сервиса, выгодная цена за 10 дней!',
-          func:Premium
+          func:Premium,
+          day:10
     },
     'VIP': {
         name: 'VIP',
         price:349,
+          innerInfo:{
+          1:'Наилучший вариант для',
+          2:'бюджетного использования!',
+        
+        },
         description: '349₽/4 дня.',
           additionalInfo: 'Самый бюджетный вариант для полного использования',
-          func:VIP
+          func:VIP,
+          day:4
     },
      'Лайт 5': {
         name: 'Лайт 5',
         price: 699,
+          innerInfo:{
+          1:'Доступ ко всем',
+          2:'инстурментам без',
+          3:'лимитов по времени.'
+        
+        },
         description: 'без подписки.',
          additionalInfo: '5 запросов с полной аналитикой профиля!',
          func:Lite5
@@ -412,6 +455,12 @@ const tarifsPrices: Record<Tarifs, TarifInfo> = {
     'Лайт 10': {
         name: 'Лайт 10',
         price: 1299,
+          innerInfo:{
+          1:'Доступ ко всем',
+          2:'инстурментам без',
+          3:'лимитов по времени.'
+        
+        },
         description: 'без подписки.',
          additionalInfo: '10 запросов с полной аналитикой профиля!',
          func:Lite10
@@ -419,6 +468,12 @@ const tarifsPrices: Record<Tarifs, TarifInfo> = {
     'Лайт 20': {
         name: 'Лайт 20',
         price: 1799,
+          innerInfo:{
+          1:'Доступ ко всем',
+          2:'инстурментам без лимитов по времени.'
+  
+        
+        },
         description: 'без подписки.',
         additionalInfo: '20 запросов с полной аналитикой профиля!',
         func:Lite20

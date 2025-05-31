@@ -59,15 +59,15 @@ const pay = async () => {
             <div className="relative bg-[#8E237333] rounded-[20px] flex gap-[10px] p-[10px] items-center h-[120px] justify-between">
                 <div className="font-[500] text-[20px] text-[#DDDDDD]">{data?.name && data.name}</div>
                 <div className="flex flex-col gap-[10px]">
-                    <div className="text-[#926C88] text-[12px]">Все функции</div>
-                    <div className="text-[#926C88] text-[12px]">Премиум за 14₽!</div>
-                    <div className="text-[#926C88] text-[12px]">{data?.description && data.description}</div>
+                    <div className="text-[#926C88] text-[12px]">{data?.innerInfo[1]}</div>
+                    <div className="text-[#926C88] text-[12px]">{data?.innerInfo[2]}</div>
+                    <div className="text-[#926C88] text-[12px]">{data?.innerInfo[3]}</div>
                 </div>
                 <div>
                     <div className="text-[#DDDDDD] font-[500] text-[24px]">{data?.price && data.price}₽</div>
-                    <div className="text-[#926C88] text-[16px]">999₽</div>
+                    {data?.name == 'Пробный'&&<div className="text-[#926C88] text-[16px]">999₽</div>}
                 </div>
-                <div className="top-[-15px] left-[20px] absolute text-[#FFFFFF] text-[16px] bg-[#926C88] rounded-[20px] inline-flex py-[5px] px-[10px]">2 дня</div>
+                <div className="top-[-15px] left-[20px] absolute text-[#FFFFFF] text-[16px] bg-[#926C88] rounded-[20px] inline-flex py-[5px] px-[10px]">{data?.day ? `${data?.day} дня` :data?.hour&&`${data.hour} часа`  }</div>
             </div>
         </div>
         <div className='flex gap-[30px]'>
@@ -112,7 +112,7 @@ const pay = async () => {
                 <div className='text-[#926C88] text-[12px]'>Анализ групп и сообществ</div>
             </div>
         </div>
-        <div><button onClick={pay} className="border-[2px] rounded-[50px] w-full py-[10px] cursor-pointer border-[#BBBBBB] text-[#BBBBBB] font-[700] text-[12px]">Подписаться за 14₽</button></div>
+        <div><button onClick={pay} className="border-[2px] rounded-[50px] w-full py-[10px] cursor-pointer border-[#BBBBBB] text-[#BBBBBB] font-[700] text-[12px]">Подписаться за {data?.price}₽</button></div>
         <div className="flex flex-col gap-[10px]">
             <div className="flex gap-[10px]">
                 <div><input ref={ref1} type='checkbox'/></div>
