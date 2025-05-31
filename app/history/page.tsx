@@ -56,7 +56,7 @@ export default function History() {
   
   
   return (
-    <div className="max-w-[500px] mx-auto w-full px-[20px] flex flex-col gap-[10px] mt-[30px]">
+    <div className="fadeIn max-w-[500px] mx-auto w-full px-[20px] flex flex-col gap-[10px] mt-[30px]">
       <div className="text-[#DDDDDD] text-[16px]">Ваша история поиска:</div>
       <div className="flex flex-col gap-[10px]  overflow-y-auto pb-[110px]">
       {Array.isArray(history) &&

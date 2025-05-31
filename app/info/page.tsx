@@ -19,7 +19,7 @@ setTimeout(() => {
     }
     if(isLoading == true) return <Loading/>
     return(
-        <div className="max-w-[500px] mx-auto w-full flex flex-col gap-[30px] mt-[30px] px-[20px]">
+        <div className="fadeIn max-w-[500px] mx-auto w-full flex flex-col gap-[30px] mt-[30px] px-[20px]">
 
             <div className="flex flex-col gap-[10px]">
                 <div onClick={()=>HandleOpen('https://blacklistone.ru//docx/pravila.docx')} className="cursor-pointer underline text-[#DDDDDD] font-[500] text-[14px] bg-[#8E237333] rounded-[10px] p-[10px] inline-flex "> Предоставление услуг</div>
