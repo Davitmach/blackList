@@ -30,9 +30,9 @@ setTimeout(() => {
             </div>
             <div className="flex flex-col items-center justify-center gap-[10px] mb-[110px]">
                 <div className="text-[#926C88] text-[14px]">Ваш ID аккаунта: <span className="text-white">{id}</span></div>
-                <div className="text-[#926C88] text-[14px] w-[243px] text-center">ИП ГЛАДУН ДМИТРИЙ ИГОРЕВИЧ
-ОГРН/ОГРНИП: 324330000044268
-ИНН: 332898961784</div>
+                <div className="text-[#926C88] text-[14px] w-[243px] text-center">ИП Истомин Максим Викторович
+ОГРН/ОГРНИП: 325619600069098
+ИНН: 611186277419</div>
 <div className="text-[#926C88] text-[14px] text-decoration underline cursor-pointer">Служба поддержки</div>
 <div className="text-[#926C88] text-[14px] cursor-pointer" onClick={()=> {
     push(PageConfig.cancel)
