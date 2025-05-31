@@ -53,7 +53,7 @@ const pay = async () => {
 
 
     return(
-       <div className="max-w-[500px] mx-auto w-full mt-[30px] px-[20px] flex flex-col gap-[30px]">
+       <div className="fadeIn2 max-w-[500px] mx-auto w-full mt-[30px] px-[20px] flex flex-col gap-[30px]">
         <div className="flex flex-col gap-[25px]">
             <div className="text-[#DDDDDD] font-[400] text-[16px]">Ваша история поиска:</div>
             <div className="relative bg-[#8E237333] rounded-[20px] flex gap-[10px] p-[10px] items-center h-[120px] justify-between">
