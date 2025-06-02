@@ -1227,7 +1227,7 @@ async function Analyz(url:{url:string}) {
 const data = await response.json();
  if(data) {
 
-if(data =='Запросов не осталось') {
+if(data?.detail =='Запросов не осталось') {
 
   push('/')
   return
