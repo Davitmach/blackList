@@ -1227,7 +1227,11 @@ async function Analyz(url:{url:string}) {
 const data = await response.json();
  if(data) {
 
+if(data =='Запросов не осталось') {
 
+  push('/')
+  return
+}
   setInfo(data);
   localStorage.setItem('data',JSON.stringify(data))
   setLoading(false)
