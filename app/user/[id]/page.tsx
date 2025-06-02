@@ -1248,9 +1248,9 @@ const response = await fetch("https://blacklistone.ru/api/subs/current_subscript
     const text = await response.json()
     if(text) {
 
-      if(text =='null') {
-        push('/')
-      }
+      // if(text =='null') {
+      //   push('/')
+      // }
       setTarif(text)
       return text;
     }
@@ -1324,7 +1324,7 @@ if(loading == true) return <Loading/>
         views={info?.total_views?? 0}
       />
       <Perepiski active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false} />
-      <Poslania active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
+      <Poslania active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:true}/>
       <Analiz/>
       <Aktivonst active={tarif =='Пробный' ? true: tarif =='Эконом'? true:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
       <Friends active={tarif =="Пробный" ? true: tarif =='Эконом'? true:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
