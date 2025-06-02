@@ -8,11 +8,31 @@ function PayPageContent() {
     const tarifParam = searchParams.get("tarif");
 const ref1 =useRef<HTMLInputElement>(null);
 const ref2 = useRef<HTMLInputElement>(null);
-    const tarif = tarifParam ? JSON.parse(decodeURIComponent(tarifParam)) : null;
-useEffect(()=> {
-if(tarif) {
 
+    const tarif =  tarifParam !=='Пробный'?   tarifParam ? JSON.parse(decodeURIComponent(tarifParam)) : null : 'Пробный';
+useEffect(()=> {
+
+if(tarif) {
+if(tarif !=='Пробный'){
     setData(tarif)
+}
+else {
+    
+    
+    setData({
+        name: 'Пробный',
+        price: 14,
+        innerInfo:{
+          1:'Все функции',
+          2:'Премиум за 14р!',
+          3:"Далее - 999 \ 10 дней."
+        },
+        description: 'далее 999₽/10дн.',
+           additionalInfo: 'Все функции Премиум на 2 дня!',
+          
+           day:2
+    })
+}
 }
 },[searchParams])
 const pay = async () => {
@@ -65,9 +85,11 @@ const pay = async () => {
                 </div>
                 <div>
                     <div className="text-[#DDDDDD] font-[500] text-[24px]">{data?.price && data.price}₽</div>
-                    {data?.name == 'Пробный'&&<div className="text-[#926C88] text-[16px]">999₽</div>}
+                    {data?.name == 'Пробный'&&<div className="text-[#926C88] text-[16px]  line-through">999₽</div>}
                 </div>
-                {data?.day || data?.hour && <div className="top-[-15px] left-[20px] absolute text-[#FFFFFF] text-[16px] bg-[#926C88] rounded-[20px] inline-flex py-[5px] px-[10px]">{data?.day ? `${data?.day} дня` :data?.hour&&`${data.hour} часа`  }</div>}
+                
+                 <div className={`top-[-15px] left-[20px] absolute text-[#FFFFFF] text-[16px] ${data?.hour || data?.day   &&  'bg-[#926C88]'} rounded-[20px] inline-flex py-[5px] px-[10px]`}>{data?.day ? `${data?.day} дня` :data?.hour&&`${data.hour} часа`  }</div>
+           
             </div>
         </div>
         <div className='flex gap-[30px]'>
