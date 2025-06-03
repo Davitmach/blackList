@@ -1318,15 +1318,15 @@ if(loading == true) return <Loading/>
     <div className="max-w-[500px] mx-auto w-full flex flex-col gap-[30px] px-[20px]">
       {
         activeLimit &&
-              <div className='max-w-[500px] w-full mx-[20px] fixed left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] z-[999999999] bg-[#2B0821] rounded-[20px] p-[15px] '>
-      <div>
+              <div className='max-w-[500px] flex flex-col justify-center items-center gap-[40px] w-full mx-[20px] fixed left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] z-[999999999] bg-[#2B0821] rounded-[20px] p-[15px] '>
+      <div className='flex flex-col gap-[15px] justify-'>
         <div><svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fillRule="evenodd" clipRule="evenodd" d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0ZM12.2265 8.83234C15.4777 6.305 19.5631 4.8 24 4.8C34.6039 4.8 43.2 13.3961 43.2 24C43.2 28.4369 41.695 32.5223 39.1677 35.7735L12.2265 8.83234ZM8.83234 12.2265C6.305 15.4777 4.8 19.5631 4.8 24C4.8 34.6039 13.3961 43.2 24 43.2C28.4369 43.2 32.5223 41.695 35.7735 39.1677L8.83234 12.2265Z" fill="#926C88"/>
 </svg>
 </div>
         <div className="text-[#926C88] text-[20px]">У вас исчерпан лимит проверок</div>
       </div>
-      <div><button onClick={()=> {
+      <div><button className='bg-[#8E2373B2] rounded-[50px] py-[10px] px-[60px] text-[16px] text-white' onClick={()=> {
         push('/')
       }}>На Главную</button></div>
     </div>
