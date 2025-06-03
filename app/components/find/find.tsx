@@ -51,7 +51,7 @@ export const Find = () => {
         }
     };
 
-    return (
+    return (<>
         <div className="fixed left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] max-w-[500px] mx-auto w-full px-[20px] flex flex-col items-center gap-[20px]">
             <div className="w-full flex flex-col items-center justify-center gap-[10px]">
                 <div className="text-[#DDDDDD] font-[500] text-[22px]">Запустим проверку?</div>
@@ -72,5 +72,7 @@ export const Find = () => {
                 </button>
             </div>
         </div>
+   
+        </>
     );
 };
