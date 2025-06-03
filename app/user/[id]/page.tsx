@@ -1230,7 +1230,7 @@ const data = await response.json();
 
 if(data?.detail =='Запросов не осталось') {
 
-  push('/')
+  setActiveLimit(true)
   return
 }
   setInfo(data);
