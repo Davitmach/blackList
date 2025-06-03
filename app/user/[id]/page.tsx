@@ -1312,6 +1312,24 @@ useEffect(()=> {
 console.log(tarif,'qaqaqem');
 
   },[tarif])
+     async function Cancel() {
+            const response = await fetch(
+              "https://blacklistone.ru/api/subs/cancel_subscription",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  "X-Telegram-InitData": window.Telegram.WebApp.initData, // Заголовок остается без изменений
+                },
+              }
+            );
+        
+            const data = await response.json();
+        
+           
+           
+          
+          }
   if(activeLimit ==true) return(
      <div className='max-w-[500px] flex flex-col justify-center items-center gap-[40px] w-[91%]  fixed left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] z-[999999999] bg-[#2B0821] rounded-[20px] p-[15px] '>
       <div className='flex flex-col gap-[15px] justify-'>
@@ -1321,8 +1339,10 @@ console.log(tarif,'qaqaqem');
 </div>
         <div className="text-[#926C88] text-[20px]">У вас исчерпан лимит проверок</div>
       </div>
-      <div><button className='bg-[#8E2373B2] rounded-[50px] py-[10px] px-[60px] text-[16px] text-white' onClick={()=> {
-        push('/')
+      <div><button className='bg-[#8E2373B2] rounded-[50px] py-[10px] px-[60px] text-[16px] text-white' onClick={async()=> {
+   await Cancel()
+   push('/')
+        
       }}>На Главную</button></div>
     </div>
   )
