@@ -9,7 +9,7 @@ function PayPageContent() {
 const ref1 =useRef<HTMLInputElement>(null);
 const ref2 = useRef<HTMLInputElement>(null);
 
-    const tarif =  tarifParam !=='Пробный'?   tarifParam ? JSON.parse(decodeURIComponent(tarifParam)) : null : 'Пробный';
+    const tarif =  tarifParam !=='Пробный' ?   tarifParam ? JSON.parse(decodeURIComponent(tarifParam)) : null : 'Пробный';
 useEffect(()=> {
 
 if(tarif) {
@@ -43,7 +43,7 @@ const pay = async () => {
       {
         method: "POST",
         body: JSON.stringify({
-          tariff: tarif.name,
+          tariff: tarif.name ? tarif.name : tarif,
         }),
         headers: {
           "Content-Type": "application/json",
