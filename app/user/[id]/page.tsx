@@ -325,7 +325,7 @@ const Perepiski = (props: IPerepiski) => {
           <div>
             <button onClick={()=> {
                  const tarifData = encodeURIComponent(JSON.stringify(Tarif));
-                 push(`/pay?tarif=${tarifData}`);
+                 push(`/pay?tarif=Пробный`);
             }} className="bg-[#8E2373B2] rounded-[50px] text-[#FFFFFF] text-[16px] py-[10px] px-[40px]">
               Проверить
             </button>
@@ -447,7 +447,7 @@ const Aktivonst = (props:IPerepiski)=> {
               <div>
                 <button onClick={()=> {
                   const tarifData = encodeURIComponent(JSON.stringify(Tarif));
-                  push(`/pay?tarif=${tarifData}`);
+                  push(`/pay?tarif=Пробный`);
                 }} className="bg-[#8E2373B2] rounded-[50px] text-[#FFFFFF] text-[16px] py-[10px] px-[40px]">
                 Активировать
                 </button>
@@ -538,7 +538,7 @@ const Friends = (props:IPerepiski)=> {
               <div>
                 <button onClick={()=>{
                   const tarifData = encodeURIComponent(JSON.stringify(Tarif));
-                  push(`/pay?tarif=${tarifData}`);
+                  push(`/pay?tarif=Пробный`);
                 }} className="bg-[#8E2373B2] rounded-[50px] text-[#FFFFFF] text-[16px] py-[10px] px-[40px]">
                 Активировать
                 </button>
@@ -611,7 +611,7 @@ const Likes = (props:IPerepiski)=> {
               <div>
                 <button onClick={()=> {
                   const tarifData = encodeURIComponent(JSON.stringify(Tarif));
-                  push(`/pay?tarif=${tarifData}`);
+                  push(`/pay?tarif=Пробный`);
                 }} className="bg-[#8E2373B2] rounded-[50px] text-[#FFFFFF] text-[16px] py-[10px] px-[40px]">
                 Активировать
                 </button>
@@ -671,7 +671,7 @@ const OutLikes = (props:IPerepiski)=> {
               <div>
                 <button onClick={()=> {
                   const tarifData = encodeURIComponent(JSON.stringify(Tarif));
-                  push(`/pay?tarif=${tarifData}`);
+                  push(`/pay?tarif=Пробный`);
                 }} className="bg-[#8E2373B2] rounded-[50px] text-[#FFFFFF] text-[16px] py-[10px] px-[40px]">
                 Активировать
                 </button>
@@ -732,7 +732,7 @@ const Comments = (props:IPerepiski)=> {
               <div>
                 <button onClick={()=> {
                   const tarifData = encodeURIComponent(JSON.stringify(Tarif));
-                  push(`/pay?tarif=${tarifData}`);
+                  push(`/pay?tarif=Пробный`);
                 }} className="bg-[#8E2373B2] rounded-[50px] text-[#FFFFFF] text-[16px] py-[10px] px-[40px]">
                 Активировать
                 </button>
@@ -795,7 +795,7 @@ const OutComments = (props:IPerepiski)=> {
               <div>
                 <button onClick={()=> {
                   const tarifData = encodeURIComponent(JSON.stringify(Tarif));
-                  push(`/pay?tarif=${tarifData}`);
+                  push(`/pay?tarif=Пробный`);
                 }} className="bg-[#8E2373B2] rounded-[50px] text-[#FFFFFF] text-[16px] py-[10px] px-[40px]">
                 Активировать
                 </button>
@@ -877,7 +877,7 @@ const Groups = (props:IPerepiski)=> {
               <div>
                 <button onClick={()=>{
                   const tarifData = encodeURIComponent(JSON.stringify(Tarif));
-                  push(`/pay?tarif=${tarifData}`);
+                  push(`/pay?tarif=Пробный`);
                 }} className="bg-[#8E2373B2] rounded-[50px] text-[#FFFFFF] text-[16px] py-[10px] px-[40px]">
                 Активировать
                 </button>
@@ -937,7 +937,7 @@ const Result = (props:IPerepiski)=> {
               <div>
                 <button onClick={()=> {
                   const tarifData = encodeURIComponent(JSON.stringify(Tarif));
-                  push(`/pay?tarif=${tarifData}`);
+                  push(`/pay?tarif=Пробный`);
                 }} className="bg-[#8E2373B2] rounded-[50px] text-[#FFFFFF] text-[16px] py-[10px] px-[40px]">
                 Активировать
                 </button>
@@ -1049,7 +1049,7 @@ const Poslania = (props:IPerepiski)=> {
     <button
       onClick={() => {
         const tarifData = encodeURIComponent(JSON.stringify(Tarif));
-        push(`/pay?tarif=${tarifData}`);
+        push(`/pay?tarif=Пробный`);
       }}
       className="bg-[#8E2373B2] rounded-[50px] text-[#FFFFFF] text-[16px] py-[10px] px-[40px]"
     >

@@ -134,7 +134,7 @@ const pay = async () => {
                 <div className='text-[#926C88] text-[12px]'>Анализ групп и сообществ</div>
             </div>
         </div>
-        <div><button onClick={pay} className="border-[2px] rounded-[50px] w-full py-[10px] cursor-pointer border-[#BBBBBB] text-[#BBBBBB] font-[700] text-[12px]">Подписаться за {data?.price}₽</button></div>
+        <div><button onClick={pay} className="border-[2px] rounded-[50px] w-full py-[10px] cursor-pointer border-[#BBBBBB] text-[#BBBBBB] font-[700] text-[12px] active:scale-[0.9] duration-[.4s]">Подписаться за {data?.price}₽</button></div>
         <div className="flex flex-col gap-[10px]">
             <div className="flex gap-[10px]">
                 <div><input ref={ref1} type='checkbox'/></div>
