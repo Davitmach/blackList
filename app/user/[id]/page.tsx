@@ -1363,17 +1363,17 @@ if(loading == true) return <Loading/>
         subs={info?.followers_count?? 0}
         views={info?.total_views?? 0}
       />
-      <Perepiski active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false} />
-      <Poslania active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:true}/>
+      <Perepiski active={tarif !== null ? true:false} />
+      <Poslania active={tarif !== null ? true :false}/>
       <Analiz/>
-      <Aktivonst active={tarif =='Пробный' ? true: tarif =='Эконом'? true:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
-      <Friends active={tarif =="Пробный" ? true: tarif =='Эконом'? true:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
-      <Likes active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
-      <OutLikes active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
-      <Comments active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
-      <OutComments active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
-      <Groups active={tarif =='Пробный' ? true: tarif =='Эконом'? true:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
-      <Result active={tarif =='Пробный' ? false: tarif =='Эконом'? false:tarif== 'Разовый'?true:tarif=='VIP'? true:tarif=='Лайт 10'? true:tarif=='Лайт 20'?true:false}/>
+      <Aktivonst active={tarif !== null ? true :false }/>
+      <Friends active={tarif !== null ? true :false }/>
+      <Likes active={tarif !== null ? true :false}/>
+      <OutLikes active={tarif !== null ? true :false}/>
+      <Comments active={tarif !== null ? true :false}/>
+      <OutComments active={tarif !== null ? true :false}/>
+      <Groups active={tarif !== null ? true :false }/>
+      <Result active={tarif !== null ? true :false}/>
       <Up/>
     </div>
     </Suspense>
