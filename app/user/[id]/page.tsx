@@ -1252,7 +1252,7 @@ const response = await fetch("https://blacklistone.ru/api/subs/current_subscript
   if(response.ok) {
     const text = await response.json()
     if(text) {
-      console.log(text);
+      console.log(text,'qaqem vret');
       
       setTarif(JSON.stringify(text))
       return text;
@@ -1302,8 +1302,9 @@ if(link.url !=='') {
   
 useEffect(()=> {
 
+console.log(tarif);
 
-},[info])
+},[info,tarif])
 
 
   useEffect(()=> {
