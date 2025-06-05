@@ -1254,7 +1254,7 @@ const response = await fetch("https://blacklistone.ru/api/subs/current_subscript
     if(text) {
       console.log(text,'qaqem vret');
       
-      setTarif(JSON.stringify(text))
+      setTarif(text)
       return text;
     }
    
