@@ -1362,17 +1362,17 @@ if(loading == true) return <Loading/>
         subs={info?.followers_count?? 0}
         views={info?.total_views?? 0}
       />
-      <Perepiski active={tarif !== null ? true:false} />
-      <Poslania active={tarif !== null ? true :false}/>
+      <Perepiski active={tarif !== "null" ? true:false} />
+      <Poslania active={tarif !== "null" ? true :false}/>
       <Analiz/>
-      <Aktivonst active={tarif !== null ? true :false }/>
-      <Friends active={tarif !== null ? true :false }/>
-      <Likes active={tarif !== null ? true :false}/>
-      <OutLikes active={tarif !== null ? true :false}/>
-      <Comments active={tarif !== null ? true :false}/>
-      <OutComments active={tarif !== null ? true :false}/>
-      <Groups active={tarif !== null ? true :false }/>
-      <Result active={tarif !== null ? true :false}/>
+      <Aktivonst active={tarif !== "null" ? true :false }/>
+      <Friends active={tarif !== "null" ? true :false }/>
+      <Likes active={tarif !== "null" ? true :false}/>
+      <OutLikes active={tarif !== "null" ? true :false}/>
+      <Comments active={tarif !== "null" ? true :false}/>
+      <OutComments active={tarif !== "null" ? true :false}/>
+      <Groups active={tarif !== "null" ? true :false }/>
+      <Result active={tarif !== "null" ? true :false}/>
       <Up/>
     </div>
     </Suspense>
