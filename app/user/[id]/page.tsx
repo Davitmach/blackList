@@ -382,7 +382,11 @@ const Perepiski = (props: IPerepiski) => {
 };
 const AktivonstBox = (props:IAktivnost)=> {
 return(
-    <div className="bg-[#DDDDDD] p-[10px] rounded-[10px] flex justify-between items-center">
+    <div onClick={()=> {
+          if(props.link?.length !==0 && props.link) {
+window.open(props.link,'_blank')
+          }
+        }} className="bg-[#DDDDDD] p-[10px] rounded-[10px] flex justify-between items-center">
     <div className="flex items-center gap-[10px]">
       <div>
         <img className='w-[16px] h-[16px] rounded-[50px]' width={16} height={16} src={props.img}/>
@@ -501,7 +505,7 @@ const Aktivonst = (props:IPerepiski)=> {
               {
                 info?.random_friends.slice(0,30).map((e)=> {
                   return(
-<AktivonstBox count={3} img={e.avatar} name={`${info?.last_name} ${info?.first_name}`}/>
+<AktivonstBox count={3} link={e.profile_link} img={e.avatar} name={`${e?.last_name} ${e?.first_name}`} />
                   )
                 })
               }
@@ -582,7 +586,11 @@ const Friends = (props:IPerepiski)=> {
 }
 const LikeBox = (props:IAktivnost)=> {
     return(
-        <div className="bg-[#DDDDDD] p-[10px] rounded-[10px] flex justify-between items-center">
+        <div onClick={()=> {
+          if(props.link?.length !==0 && props.link) {
+window.open(props.link,'_blank')
+          }
+        }} className="bg-[#DDDDDD] p-[10px] rounded-[10px] flex justify-between items-center">
         <div className="flex items-center gap-[10px]">
           <div>
           <img className='w-[16px] h-[16px] rounded-[50px]' width={16} height={16} src={props.img}/>
@@ -714,7 +722,7 @@ const OutLikes = (props:IPerepiski)=> {
               {
                 info?.random_friends.slice(0,20).map(e=> {
                   return(
-                    <LikeBox count={3} img={e.avatar} name={`${info?.last_name} ${info?.first_name}`}/>
+                    <LikeBox link={e.profile_link} count={3} img={e.avatar} name={`${info?.last_name} ${info?.first_name}`}/>
                   )
                 })
               }
@@ -780,7 +788,7 @@ const Comments = (props:IPerepiski)=> {
               {
                 info?.top_commenters.slice(0,5).map(e=> {
                   return(
-                    <LikeBox count={3} img={e.avatar} name={`${info?.last_name} ${info?.first_name}`}/>
+                    <LikeBox link={e.profile_link} count={3} img={e.avatar} name={`${info?.last_name} ${info?.first_name}`}/>
                   )
                 })
               }
