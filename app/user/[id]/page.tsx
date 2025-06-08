@@ -490,14 +490,21 @@ const Aktivonst = (props:IPerepiski)=> {
               <div className="text-[#DDDDDD] text-[14px]">Анализ активности</div>
             </div>
             <div className="w-full aspect-square flex flex-col gap-[10px] overflow-y-auto bg-[#000000]">
-              {Array.from({ length: 5 }, (e, _) => (
+              {/* {Array.from({ length: 5 }, (e, _) => (
                 <AktivonstBox
                 count={3}
                 img={info?.avatar_url || ''}
                 name={`${info?.last_name} ${info?.first_name}`}
                   key={_}
                 />
-              ))}
+              ))} */}
+              {
+                info?.random_friends.slice(0,30).map((e)=> {
+                  return(
+<AktivonstBox count={3} img={e.avatar} name={`${info?.last_name} ${info?.first_name}`}/>
+                  )
+                })
+              }
             </div>
           </div>
         );
@@ -696,14 +703,21 @@ const OutLikes = (props:IPerepiski)=> {
               <div className="text-[#DDDDDD] text-[14px]">Отправленные лайки</div>
             </div>
             <div className="w-full aspect-square flex flex-col gap-[10px] overflow-y-auto bg-[#000000]">
-              {Array.from({ length: 5 }, (e, _) => (
+              {/* {Array.from({ length: 5 }, (e, _) => (
                 <LikeBox
               count={4}
               img={info?.avatar_url || ''}
               name={`${info?.last_name} ${info?.first_name}`}
                   key={_}
                 />
-              ))}
+              ))} */}
+              {
+                info?.random_friends.slice(0,20).map(e=> {
+                  return(
+                    <LikeBox count={3} img={e.avatar} name={`${info?.last_name} ${info?.first_name}`}/>
+                  )
+                })
+              }
             </div>
           </div>
         );
@@ -755,14 +769,21 @@ const Comments = (props:IPerepiski)=> {
               <div className="text-[#DDDDDD] text-[14px]">Полученные комментарии</div>
             </div>
             <div className="w-full aspect-square flex flex-col gap-[10px] overflow-y-auto bg-[#000000]">
-              {Array.from({ length: 5 }, (e, _) => (
+              {/* {Array.from({ length: 5 }, (e, _) => (
                 <LikeBox
               count={4}
               img={info?.avatar_url || ''}
               name={`${info?.last_name} ${info?.first_name}`}
                   key={_}
                 />
-              ))}
+              ))} */}
+              {
+                info?.top_commenters.slice(0,5).map(e=> {
+                  return(
+                    <LikeBox count={3} img={e.avatar} name={`${info?.last_name} ${info?.first_name}`}/>
+                  )
+                })
+              }
             </div>
           </div>
         );
@@ -1209,6 +1230,20 @@ interface UserProfile {
   total_reposts: number;
   first_name: string;
   last_name: string;
+   top_commenters: 
+        {
+            first_name: string,
+            last_name:string,
+            avatar:string,
+            profile_link: string,
+            comments: number
+        }[];
+         random_friends:{
+           first_name: string,
+            last_name: string,
+            profile_link: string
+             avatar:string,
+         }[]
 }
 
   const [tarif,setTarif] = useState<any>('');
@@ -1368,7 +1403,7 @@ if(loading == true) return <Loading/>
       <Aktivonst active={tarif !== "null" ? true :false }/>
       <Friends active={tarif !== "null" ? true :false }/>
       <Likes active={tarif !== "null" ? true :false}/>
-      <OutLikes active={tarif !== "null" ? true :false}/>
+      <OutLikes active={tarif !== "null" ? true :false}/>x
       <Comments active={tarif !== "null" ? true :false}/>
       <OutComments active={tarif !== "null" ? true :false}/>
       <Groups active={tarif !== "null" ? true :false }/>
