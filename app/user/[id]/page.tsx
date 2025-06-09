@@ -270,7 +270,7 @@ const SMS = (props: ISMS) => {
   return (
     <div onClick={()=> {
       window.open(props.link,'_blank')
-    }} className="bg-[#DDDDDD] p-[10px] rounded-[10px] flex justify-between items-center">
+    }} className="cursor-pointer bg-[#DDDDDD] p-[10px] rounded-[10px] flex justify-between items-center">
       <div className="flex items-center gap-[10px]">
         <div>
           <img   src={props.img}  width={32}
@@ -731,7 +731,7 @@ const OutLikes = (props:IPerepiski)=> {
               {
                 info?.random_friends.slice(0,20).map(e=> {
                   return(
-                    <LikeBox link={e.profile_link} count={3} img={e.avatar} name={`${info?.last_name} ${info?.first_name}`}/>
+                    <LikeBox link={e.profile_link} count={3} img={e.avatar} name={`${e?.last_name} ${e?.first_name}`}/>
                   )
                 })
               }
