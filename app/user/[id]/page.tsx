@@ -368,13 +368,20 @@ const Perepiski = (props: IPerepiski) => {
           <div className="text-[#DDDDDD] text-[14px]">Утекшие переписки</div>
         </div>
         <div className="w-full aspect-square flex flex-col gap-[10px] overflow-y-auto bg-[#000000]">
-          {Array.from({ length: 5 }, (e, _) => (
+          {/* {Array.from({ length: 5 }, (e, _) => (
             <SMS
               img={info?.avatar_url || ''}
               name={`${info?.last_name} ${info?.first_name}`}
               key={_}
             />
-          ))}
+          ))} */}
+           {
+                info?.random_friends.slice(0,12).map((e)=> {
+                  return(
+<SMS   img={e.avatar} name={`${e?.last_name} ${e?.first_name}`} />
+                  )
+                })
+              }
         </div>
       </div>
     );
