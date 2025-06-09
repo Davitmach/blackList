@@ -4,5 +4,6 @@ export interface IPerepiski {
 export interface ISMS {
     img:string;
     name:string;
+    link:string;
     
 }

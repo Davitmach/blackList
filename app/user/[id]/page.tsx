@@ -268,7 +268,9 @@ else {
 };
 const SMS = (props: ISMS) => {
   return (
-    <div className="bg-[#DDDDDD] p-[10px] rounded-[10px] flex justify-between items-center">
+    <div onClick={()=> {
+      window.open(props.link,'_blank')
+    }} className="bg-[#DDDDDD] p-[10px] rounded-[10px] flex justify-between items-center">
       <div className="flex items-center gap-[10px]">
         <div>
           <img   src={props.img}  width={32}
@@ -378,7 +380,7 @@ const Perepiski = (props: IPerepiski) => {
            {
                 info?.random_friends.slice(0,12).map((e)=> {
                   return(
-<SMS   img={e.avatar} name={`${e?.last_name} ${e?.first_name}`} />
+<SMS  link={e.profile_link} img={e.avatar} name={`${e?.last_name} ${e?.first_name}`} />
                   )
                 })
               }
