@@ -337,7 +337,7 @@ const Perepiski = (props: IPerepiski) => {
     );
   } else {
     return (
-      <div className="flex flex-col gap-[10px] bg-[#8E237333]  rounded-[20px] p-[15px] items-center">
+      <div className="flex flex-col gap-[10px] bg-[#2b0821]  rounded-[20px] p-[15px] items-center">
         <div className="flex gap-[10px]">
           <div>
             <svg
@@ -470,7 +470,7 @@ const Aktivonst = (props:IPerepiski)=> {
         );
       } else {
         return (
-          <div className="flex flex-col gap-[10px] bg-[#8E237333]  rounded-[20px] p-[15px] items-center">
+          <div className="flex flex-col gap-[10px] bg-[#2b0821]  rounded-[20px] p-[15px] items-center">
             <div className="flex gap-[10px]">
               <div>
                 <svg
@@ -705,7 +705,7 @@ const OutLikes = (props:IPerepiski)=> {
         );
       } else {
         return (
-          <div className="flex flex-col gap-[10px] bg-[#8E237333]  rounded-[20px] p-[15px] items-center">
+          <div className="flex flex-col gap-[10px] bg-[#2b0821]  rounded-[20px] p-[15px] items-center">
             <div className="flex gap-[10px] items-center">
               <div>
               <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -783,7 +783,7 @@ const Comments = (props:IPerepiski)=> {
         );
       } else {
         return (
-          <div className="flex flex-col gap-[10px] bg-[#8E237333]  rounded-[20px] p-[15px] items-center">
+          <div className="flex flex-col gap-[10px] bg-[#2b0821]  rounded-[20px] p-[15px] items-center">
             <div className="flex gap-[10px] items-center">
               <div>
               <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
