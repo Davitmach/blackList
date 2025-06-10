@@ -34,7 +34,7 @@ setTimeout(() => {
 ОГРН/ОГРНИП: 325619600069098
 ИНН: 611186277419</div>
 <div className="text-[#926C88] text-[14px] text-decoration underline cursor-pointer" onClick={()=> {
-    window.open('@blacklistone_support','_blank')
+    window.open('tg://resolve?domain=blacklistone_support','_blank')
 }}>Служба поддержки</div>
 <div className="text-[#926C88] text-[14px] cursor-pointer" onClick={()=> {
     push(PageConfig.cancel)
