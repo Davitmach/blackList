@@ -728,13 +728,23 @@ const OutLikes = (props:IPerepiski)=> {
                   key={_}
                 />
               ))} */}
-              {
-                info?.random_friends.slice(0,20).map(e=> {
-                  return(
-                    <LikeBox link={e.profile_link} count={3} img={e.avatar} name={`${e?.last_name} ${e?.first_name}`}/>
-                  )
-                })
-              }
+             {info?.random_friends
+  ?.slice(0, 20)
+  .map(e => ({
+    ...e,
+    count: Math.floor(Math.random() * 50) + 1, // случайное число от 1 до 50
+  }))
+  .sort((a, b) => b.count - a.count) // сортировка по убыванию count
+  .map((e,index) => (
+    <LikeBox
+      key={index} // желательно добавить уникальный ключ
+      link={e.profile_link}
+      count={e.count}
+      img={e.avatar}
+      name={`${e.last_name} ${e.first_name}`}
+    />
+  ))}
+
             </div>
           </div>
         );
