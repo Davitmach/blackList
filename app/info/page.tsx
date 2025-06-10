@@ -35,6 +35,8 @@ setTimeout(() => {
 ИНН: 611186277419</div>
 <div className="text-[#926C88] text-[14px] text-decoration underline cursor-pointer" onClick={()=> {
     document.location.href= 'tg://resolve?domain=blacklistone_support'
+    console.log(12312312);
+    
 }}>Служба поддержки</div>
 <div className="text-[#926C88] text-[14px] cursor-pointer" onClick={()=> {
     push(PageConfig.cancel)
