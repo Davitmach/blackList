@@ -369,7 +369,7 @@ const Perepiski = (props: IPerepiski) => {
           </div>
           <div className="text-[#DDDDDD] text-[14px]">Утекшие переписки</div>
         </div>
-        <div className={`w-full aspect-square flex flex-col gap-[10px] overflow-y-auto ${info && info.random_friends.length>0?'bg-[black]' :'bg-[#8E237333]'}`}>
+        <div className={`w-full aspect-square flex flex-col gap-[10px] overflow-y-auto ${info && info.random_friends.length>0?'bg-[black]' :'bg-[#2B0821]'}`}>
           {/* {Array.from({ length: 5 }, (e, _) => (
             <SMS
               img={info?.avatar_url || ''}
@@ -502,7 +502,7 @@ const Aktivonst = (props:IPerepiski)=> {
               </div>
               <div className="text-[#DDDDDD] text-[14px]">Анализ активности</div>
             </div>
-            <div className={`w-full aspect-square flex flex-col gap-[10px] overflow-y-auto ${info && info.random_friends.length>0 ?'bg-[#000000]' :'bg-[#8E237333]'} `}>
+            <div className={`w-full aspect-square flex flex-col gap-[10px] overflow-y-auto ${info && info.random_friends.length>0 ?'bg-[#000000]' :'bg-[#2B0821]'} `}>
               {/* {Array.from({ length: 5 }, (e, _) => (
                 <AktivonstBox
                 count={3}
@@ -719,7 +719,7 @@ const OutLikes = (props:IPerepiski)=> {
               </div>
               <div className="text-[#DDDDDD] text-[14px]">Отправленные лайки</div>
             </div>
-            <div className={`w-full aspect-square flex flex-col gap-[10px] overflow-y-auto  ${info&& info.random_friends.length>0?'bg-[#000000]':'#8E237333'}`}>
+            <div className={`w-full aspect-square flex flex-col gap-[10px] overflow-y-auto  ${info&& info.random_friends.length>0?'bg-[#000000]':'bg-[#2B0821]'}`}>
               {/* {Array.from({ length: 5 }, (e, _) => (
                 <LikeBox
               count={4}
@@ -795,7 +795,7 @@ const Comments = (props:IPerepiski)=> {
               </div>
               <div className="text-[#DDDDDD] text-[14px]">Полученные комментарии</div>
             </div>
-            <div className={`w-full aspect-square flex flex-col gap-[10px] overflow-y-auto ${info && info.top_commenters.length>0 ?'bg-[#000000]' :'bg-[#8E237333]'} `}>
+            <div className={`w-full aspect-square flex flex-col gap-[10px] overflow-y-auto ${info && info.top_commenters.length>0 ?'bg-[#000000]' :'bg-[#2B0821]'} `}>
               {/* {Array.from({ length: 5 }, (e, _) => (
                 <LikeBox
               count={4}
