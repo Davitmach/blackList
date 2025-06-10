@@ -369,7 +369,7 @@ const Perepiski = (props: IPerepiski) => {
           </div>
           <div className="text-[#DDDDDD] text-[14px]">Утекшие переписки</div>
         </div>
-        <div className={`w-full aspect-square flex flex-col gap-[10px] overflow-y-auto ${info && info.random_friends.length>0?'bg-[black]' :'bg-[#2B0821]'}`}>
+        <div className={`w-full aspect-square flex flex-col ${info && info.random_friends.length==0?'items-center justify-center':''} gap-[10px] overflow-y-auto ${info && info.random_friends.length>0?'bg-[black]' :'bg-[#2B0821]'}`}>
           {/* {Array.from({ length: 5 }, (e, _) => (
             <SMS
               img={info?.avatar_url || ''}
@@ -392,7 +392,7 @@ const Perepiski = (props: IPerepiski) => {
 </div>
                 <div className='flex flex-col items-center gap-[5px]'>
                   <h1 className='text-[#926C88] text-[20px]'>Информация обновляется</h1>
-                  <p className='max-w-[290px] w-full text-[#926C88] text-[16px]'>Если ничего не происхдит, то данных не найдено</p>
+                  <p className='text-center max-w-[290px] w-full text-[#926C88] text-[16px]'>Если ничего не происхдит, то данных не найдено</p>
                 </div>
               </div>
               }
@@ -514,7 +514,7 @@ const Aktivonst = (props:IPerepiski)=> {
               </div>
               <div className="text-[#DDDDDD] text-[14px]">Анализ активности</div>
             </div>
-            <div className={`w-full aspect-square flex flex-col gap-[10px] overflow-y-auto ${info && info.random_friends.length>0 ?'bg-[#000000]' :'bg-[#2B0821]'} `}>
+            <div className={`w-full aspect-square flex flex-col gap-[10px] ${info && info.random_friends.length==0?'items-center justify-center':''} overflow-y-auto ${info && info.random_friends.length>0 ?'bg-[#000000]' :'bg-[#2B0821]'} `}>
               {/* {Array.from({ length: 5 }, (e, _) => (
                 <AktivonstBox
                 count={3}
@@ -538,7 +538,7 @@ const Aktivonst = (props:IPerepiski)=> {
 </div>
                 <div className='flex flex-col items-center gap-[5px]'>
                   <h1 className='text-[#926C88] text-[20px]'>Информация обновляется</h1>
-                  <p className='max-w-[290px] w-full text-[#926C88] text-[16px]'>Если ничего не происхдит, то данных не найдено</p>
+                  <p className='text-center max-w-[290px] w-full text-[#926C88] text-[16px]'>Если ничего не происхдит, то данных не найдено</p>
                 </div>
               </div>
               }
@@ -743,7 +743,7 @@ const OutLikes = (props:IPerepiski)=> {
               </div>
               <div className="text-[#DDDDDD] text-[14px]">Отправленные лайки</div>
             </div>
-            <div className={`w-full aspect-square flex flex-col gap-[10px] overflow-y-auto  ${info&& info.random_friends.length>0?'bg-[#000000]':'bg-[#2B0821]'}`}>
+            <div className={`w-full aspect-square flex ${info && info.random_friends.length==0?'items-center justify-center':''} flex-col gap-[10px] overflow-y-auto  ${info&& info.random_friends.length>0?'bg-[#000000]':'bg-[#2B0821]'}`}>
               {/* {Array.from({ length: 5 }, (e, _) => (
                 <LikeBox
               count={4}
@@ -776,7 +776,7 @@ const OutLikes = (props:IPerepiski)=> {
 </div>
                 <div className='flex flex-col items-center gap-[5px]'>
                   <h1 className='text-[#926C88] text-[20px]'>Информация обновляется</h1>
-                  <p className='max-w-[290px] w-full text-[#926C88] text-[16px]'>Если ничего не происхдит, то данных не найдено</p>
+                  <p className='text-center max-w-[290px] w-full text-[#926C88] text-[16px]'>Если ничего не происхдит, то данных не найдено</p>
                 </div>
               </div>
               }
@@ -831,7 +831,7 @@ const Comments = (props:IPerepiski)=> {
               </div>
               <div className="text-[#DDDDDD] text-[14px]">Полученные комментарии</div>
             </div>
-            <div className={`w-full aspect-square flex flex-col gap-[10px] overflow-y-auto ${info && info.top_commenters.length>0 ?'bg-[#000000]' :'bg-[#2B0821]'} `}>
+            <div className={`w-full aspect-square ${info && info.top_commenters.length==0?'items-center justify-center':''} flex flex-col gap-[10px] overflow-y-auto ${info && info.top_commenters.length>0 ?'bg-[#000000]' :'bg-[#2B0821]'} `}>
               {/* {Array.from({ length: 5 }, (e, _) => (
                 <LikeBox
               count={4}
@@ -855,7 +855,7 @@ const Comments = (props:IPerepiski)=> {
 </div>
                 <div className='flex flex-col items-center gap-[5px]'>
                   <h1 className='text-[#926C88] text-[20px]'>Информация обновляется</h1>
-                  <p className='max-w-[290px] w-full text-[#926C88] text-[16px]'>Если ничего не происхдит, то данных не найдено</p>
+                  <p className='text-center max-w-[290px] w-full text-[#926C88] text-[16px]'>Если ничего не происхдит, то данных не найдено</p>
                 </div>
               </div>
               }
