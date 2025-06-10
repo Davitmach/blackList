@@ -384,6 +384,18 @@ const Perepiski = (props: IPerepiski) => {
                   )
                 })
               }
+              {info && info.random_friends.length==0&&
+              <div className='flex flex-col w-full items-center gap-[15px]'>
+                <div><svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fillRule="evenodd" clipRule="evenodd" d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0ZM12.2265 8.83234C15.4777 6.305 19.5631 4.8 24 4.8C34.6039 4.8 43.2 13.3961 43.2 24C43.2 28.4369 41.695 32.5223 39.1677 35.7735L12.2265 8.83234ZM8.83234 12.2265C6.305 15.4777 4.8 19.5631 4.8 24C4.8 34.6039 13.3961 43.2 24 43.2C28.4369 43.2 32.5223 41.695 35.7735 39.1677L8.83234 12.2265Z" fill="#926C88"/>
+</svg>
+</div>
+                <div className='flex flex-col items-center gap-[5px]'>
+                  <h1 className='text-[#926C88] text-[20px]'>Информация обновляется</h1>
+                  <p className='max-w-[290px] w-full text-[#926C88] text-[16px]'>Если ничего не происхдит, то данных не найдено</p>
+                </div>
+              </div>
+              }
         </div>
       </div>
     );
@@ -517,6 +529,18 @@ const Aktivonst = (props:IPerepiski)=> {
 <AktivonstBox count={3} link={e.profile_link} img={e.avatar} name={`${e?.last_name} ${e?.first_name}`} />
                   )
                 })
+              }
+              {info && info.random_friends.length==0&&
+              <div className='flex flex-col w-full items-center gap-[15px]'>
+                <div><svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fillRule="evenodd" clipRule="evenodd" d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0ZM12.2265 8.83234C15.4777 6.305 19.5631 4.8 24 4.8C34.6039 4.8 43.2 13.3961 43.2 24C43.2 28.4369 41.695 32.5223 39.1677 35.7735L12.2265 8.83234ZM8.83234 12.2265C6.305 15.4777 4.8 19.5631 4.8 24C4.8 34.6039 13.3961 43.2 24 43.2C28.4369 43.2 32.5223 41.695 35.7735 39.1677L8.83234 12.2265Z" fill="#926C88"/>
+</svg>
+</div>
+                <div className='flex flex-col items-center gap-[5px]'>
+                  <h1 className='text-[#926C88] text-[20px]'>Информация обновляется</h1>
+                  <p className='max-w-[290px] w-full text-[#926C88] text-[16px]'>Если ничего не происхдит, то данных не найдено</p>
+                </div>
+              </div>
               }
             </div>
           </div>
@@ -744,6 +768,18 @@ const OutLikes = (props:IPerepiski)=> {
       name={`${e.last_name} ${e.first_name}`}
     />
   ))}
+  {info && info.random_friends.length==0&&
+              <div className='flex flex-col w-full items-center gap-[15px]'>
+                <div><svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fillRule="evenodd" clipRule="evenodd" d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0ZM12.2265 8.83234C15.4777 6.305 19.5631 4.8 24 4.8C34.6039 4.8 43.2 13.3961 43.2 24C43.2 28.4369 41.695 32.5223 39.1677 35.7735L12.2265 8.83234ZM8.83234 12.2265C6.305 15.4777 4.8 19.5631 4.8 24C4.8 34.6039 13.3961 43.2 24 43.2C28.4369 43.2 32.5223 41.695 35.7735 39.1677L8.83234 12.2265Z" fill="#926C88"/>
+</svg>
+</div>
+                <div className='flex flex-col items-center gap-[5px]'>
+                  <h1 className='text-[#926C88] text-[20px]'>Информация обновляется</h1>
+                  <p className='max-w-[290px] w-full text-[#926C88] text-[16px]'>Если ничего не происхдит, то данных не найдено</p>
+                </div>
+              </div>
+              }
 
             </div>
           </div>
@@ -810,6 +846,18 @@ const Comments = (props:IPerepiski)=> {
                     <LikeBox link={e.profile_link} count={3} img={e.avatar} name={`${info?.last_name} ${info?.first_name}`}/>
                   )
                 })
+              }
+              {info && info.top_commenters.length==0&&
+              <div className='flex flex-col w-full items-center gap-[15px]'>
+                <div><svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fillRule="evenodd" clipRule="evenodd" d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0ZM12.2265 8.83234C15.4777 6.305 19.5631 4.8 24 4.8C34.6039 4.8 43.2 13.3961 43.2 24C43.2 28.4369 41.695 32.5223 39.1677 35.7735L12.2265 8.83234ZM8.83234 12.2265C6.305 15.4777 4.8 19.5631 4.8 24C4.8 34.6039 13.3961 43.2 24 43.2C28.4369 43.2 32.5223 41.695 35.7735 39.1677L8.83234 12.2265Z" fill="#926C88"/>
+</svg>
+</div>
+                <div className='flex flex-col items-center gap-[5px]'>
+                  <h1 className='text-[#926C88] text-[20px]'>Информация обновляется</h1>
+                  <p className='max-w-[290px] w-full text-[#926C88] text-[16px]'>Если ничего не происхдит, то данных не найдено</p>
+                </div>
+              </div>
               }
             </div>
           </div>
