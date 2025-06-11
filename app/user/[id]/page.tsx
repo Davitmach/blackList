@@ -572,7 +572,7 @@ const Friends = (props:IPerepiski)=> {
 <path fillRule="evenodd" clipRule="evenodd" d="M10 0C7.94843 0 6.10496 0.794975 4.6435 1.72187C3.17436 2.65363 2.00734 3.77164 1.28794 4.54159C1.26501 4.56614 1.2411 4.59138 1.2165 4.61736C0.911748 4.93915 0.5 5.37391 0.5 6C0.5 6.62609 0.91173 7.06083 1.21648 7.38263C1.24102 7.40853 1.26507 7.43393 1.28794 7.45841C2.00734 8.22836 3.17436 9.34637 4.6435 10.2781C6.10496 11.205 7.94843 12 10 12C12.0516 12 13.895 11.205 15.3565 10.2781C16.8256 9.34637 17.9927 8.22836 18.7121 7.45841C18.735 7.43386 18.7589 7.40861 18.7835 7.38263C19.0883 7.06084 19.5 6.62609 19.5 6C19.5 5.37391 19.0883 4.93917 18.7835 4.61737C18.7589 4.59141 18.735 4.56613 18.7121 4.54159C17.9927 3.77164 16.8256 2.65363 15.3565 1.72187C13.895 0.794976 12.0516 0 10 0ZM2.78901 5.63147C3.45041 4.92358 4.49658 3.9269 5.77921 3.11343C7.06952 2.29508 8.51641 1.71429 10 1.71429C11.4836 1.71429 12.9305 2.29508 14.2208 3.11343C15.5034 3.9269 16.5496 4.92358 17.211 5.63147C17.308 5.7353 17.3805 5.81297 17.4405 5.88128C17.488 5.93536 17.5183 5.97302 17.538 6C17.5183 6.02698 17.488 6.06464 17.4405 6.11872C17.3805 6.18703 17.308 6.2647 17.211 6.36853C16.5496 7.07642 15.5034 8.0731 14.2208 8.88657C12.9305 9.70492 11.4836 10.2857 10 10.2857C8.51641 10.2857 7.06952 9.70492 5.77921 8.88657C4.49658 8.0731 3.45041 7.07642 2.78901 6.36853C2.69199 6.2647 2.61954 6.18703 2.55952 6.11872C2.51201 6.06464 2.48174 6.02698 2.462 6C2.48174 5.97302 2.51201 5.93536 2.55952 5.88128C2.61954 5.81297 2.692 5.7353 2.78901 5.63147Z" fill="#926C88"/>
 </svg>
               </div>
-              <div className="text-[#DDDDDD] text-[14px]">Анализ активности</div>
+              <div className="text-[#DDDDDD] text-[14px]">Скрытые друзья</div>
             </div>
             <div className="flex flex-col items-center justify-center aspect-square relative gap-[20px] w-full rounded-[10px]">
             <div style={{backgroundImage:"url('/spo.png')"}} className="bg-black -z-[50] img absolute w-full h-full"></div>
@@ -601,17 +601,41 @@ const Friends = (props:IPerepiski)=> {
 </svg>
 
               </div>
-              <div className="text-[#DDDDDD] text-[14px]">Анализ активности</div>
+              <div className="text-[#DDDDDD] text-[14px]">Скрытые друзья</div>
             </div>
             <div className="w-full aspect-square flex flex-col gap-[10px] overflow-y-auto bg-[#000000]">
-              {Array.from({ length: 5 }, (e, _) => (
+              {/* {Array.from({ length: 5 }, (e, _) => (
                 <FriendsBox
               
                 img={info?.avatar_url || ''}
                 name={`${info?.last_name} ${info?.first_name}`}
                   key={_}
                 />
-              ))}
+              ))} */}
+               {
+                info?.random_friends.slice(0,30).map((e,index)=> {
+                  return(
+ <FriendsBox
+              
+                img={info?.avatar_url || ''}
+                name={`${info?.last_name} ${info?.first_name}`}
+                  key={index}
+                />
+                  )
+                })
+              }
+              {info && info.random_friends.length==0&&
+              <div className='flex flex-col w-full items-center gap-[15px]'>
+                <div><svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fillRule="evenodd" clipRule="evenodd" d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0ZM12.2265 8.83234C15.4777 6.305 19.5631 4.8 24 4.8C34.6039 4.8 43.2 13.3961 43.2 24C43.2 28.4369 41.695 32.5223 39.1677 35.7735L12.2265 8.83234ZM8.83234 12.2265C6.305 15.4777 4.8 19.5631 4.8 24C4.8 34.6039 13.3961 43.2 24 43.2C28.4369 43.2 32.5223 41.695 35.7735 39.1677L8.83234 12.2265Z" fill="#926C88"/>
+</svg>
+</div>
+                <div className='flex flex-col items-center gap-[5px]'>
+                  <h1 className='text-[#926C88] text-[20px]'>Информация обновляется</h1>
+                  <p className='text-center max-w-[290px] w-full text-[#926C88] text-[16px]'>Если ничего не происхдит, то данных не найдено</p>
+                </div>
+              </div>
+              }
             </div>
           </div>
         );
@@ -946,14 +970,38 @@ const OutComments = (props:IPerepiski)=> {
               <div className="text-[#DDDDDD] text-[14px]">Отправленные комментарии</div>
             </div>
             <div className="w-full aspect-square flex flex-col gap-[10px] overflow-y-auto bg-[#000000]">
-              {Array.from({ length: 5 }, (e, _) => (
+              {/* {Array.from({ length: 5 }, (e, _) => (
                 <LikeBox
               count={4}
               img={info?.avatar_url || ''}
               name={`${info?.last_name} ${info?.first_name}`}
                   key={_}
                 />
-              ))}
+              ))} */}
+               {
+                info?.top_commenters.slice(0,30).map((e,index)=> {
+                  return(
+ <FriendsBox
+              
+                img={info?.avatar_url || ''}
+                name={`${info?.last_name} ${info?.first_name}`}
+                  key={index}
+                />
+                  )
+                })
+              }
+              {info && info.top_commenters.length==0&&
+              <div className='flex flex-col w-full items-center gap-[15px]'>
+                <div><svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fillRule="evenodd" clipRule="evenodd" d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0ZM12.2265 8.83234C15.4777 6.305 19.5631 4.8 24 4.8C34.6039 4.8 43.2 13.3961 43.2 24C43.2 28.4369 41.695 32.5223 39.1677 35.7735L12.2265 8.83234ZM8.83234 12.2265C6.305 15.4777 4.8 19.5631 4.8 24C4.8 34.6039 13.3961 43.2 24 43.2C28.4369 43.2 32.5223 41.695 35.7735 39.1677L8.83234 12.2265Z" fill="#926C88"/>
+</svg>
+</div>
+                <div className='flex flex-col items-center gap-[5px]'>
+                  <h1 className='text-[#926C88] text-[20px]'>Информация обновляется</h1>
+                  <p className='text-center max-w-[290px] w-full text-[#926C88] text-[16px]'>Если ничего не происхдит, то данных не найдено</p>
+                </div>
+              </div>
+              }
             </div>
           </div>
         );
