@@ -953,7 +953,7 @@ const OutComments = (props:IPerepiski)=> {
         );
       } else {
         return (
-          <div className="flex flex-col gap-[10px] bg-[#8E237333]  rounded-[20px] p-[15px] items-center">
+          <div className="flex flex-col gap-[10px] bg-[#2B0821]  rounded-[20px] p-[15px] items-center">
             <div className="flex gap-[10px] items-center">
               <div>
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -969,7 +969,7 @@ const OutComments = (props:IPerepiski)=> {
               </div>
               <div className="text-[#DDDDDD] text-[14px]">Отправленные комментарии</div>
             </div>
-         <div className={`w-full aspect-square flex flex-col gap-[10px] ${info && info.random_friends.length==0?'items-center justify-center':''} overflow-y-auto ${info && info.top_commenters.length>0 ?'bg-[#000000]' :'bg-[#2B0821]'} `}>
+         <div className={`w-full aspect-square flex flex-col gap-[10px] ${info && info.top_commenters.length==0?'items-center justify-center':''} overflow-y-auto ${info && info.top_commenters.length>0 ?'bg-[#000000]' :'bg-[#2B0821]'} `}>
               {/* {Array.from({ length: 5 }, (e, _) => (
                 <LikeBox
               count={4}
