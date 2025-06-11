@@ -617,8 +617,8 @@ const Friends = (props:IPerepiski)=> {
                   return(
  <FriendsBox
               
-                img={info?.avatar_url || ''}
-                name={`${info?.last_name} ${info?.first_name}`}
+                img={e?.avatar || ''}
+                name={`${e?.last_name} ${e?.first_name}`}
                   key={index}
                 />
                   )
