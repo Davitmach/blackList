@@ -680,14 +680,42 @@ const Likes = (props:IPerepiski)=> {
               <div className="text-[#DDDDDD] text-[14px]">Полученные лайки</div>
             </div>
             <div className="w-full aspect-square flex flex-col gap-[10px] overflow-y-auto bg-[#000000]">
-              {Array.from({ length: 5 }, (e, _) => (
+              {/* {Array.from({ length: 5 }, (e, _) => (
                 <LikeBox
               count={4}
               img={info?.avatar_url || ''}
               name={`${info?.last_name} ${info?.first_name}`}
                   key={_}
                 />
-              ))}
+              ))} */}
+                              {info?.random_friends
+  ?.slice(0, 20)
+  .map(e => ({
+    ...e,
+    count: Math.floor(Math.random() * 50) + 1, // случайное число от 1 до 50
+  }))
+  .sort((a, b) => b.count - a.count) // сортировка по убыванию count
+  .map((e,index) => (
+    <LikeBox
+      key={index} // желательно добавить уникальный ключ
+      link={e.profile_link}
+      count={e.count}
+      img={e.avatar}
+      name={`${e.last_name} ${e.first_name}`}
+    />
+  ))}
+  {info && info.random_friends.length==0&&
+              <div className='flex flex-col w-full items-center gap-[15px]'>
+                <div><svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fillRule="evenodd" clipRule="evenodd" d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0ZM12.2265 8.83234C15.4777 6.305 19.5631 4.8 24 4.8C34.6039 4.8 43.2 13.3961 43.2 24C43.2 28.4369 41.695 32.5223 39.1677 35.7735L12.2265 8.83234ZM8.83234 12.2265C6.305 15.4777 4.8 19.5631 4.8 24C4.8 34.6039 13.3961 43.2 24 43.2C28.4369 43.2 32.5223 41.695 35.7735 39.1677L8.83234 12.2265Z" fill="#926C88"/>
+</svg>
+</div>
+                <div className='flex flex-col items-center gap-[5px]'>
+                  <h1 className='text-[#926C88] text-[20px]'>Информация обновляется</h1>
+                  <p className='text-center max-w-[290px] w-full text-[#926C88] text-[16px]'>Если ничего не происхдит, то данных не найдено</p>
+                </div>
+              </div>
+              }
             </div>
           </div>
         );
