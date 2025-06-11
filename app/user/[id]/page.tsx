@@ -603,7 +603,7 @@ const Friends = (props:IPerepiski)=> {
               </div>
               <div className="text-[#DDDDDD] text-[14px]">Скрытые друзья</div>
             </div>
-            <div className="w-full aspect-square flex flex-col gap-[10px] overflow-y-auto bg-[#000000]">
+             <div className={`w-full aspect-square flex flex-col gap-[10px] ${info && info.random_friends.length==0?'items-center justify-center':''} overflow-y-auto ${info && info.random_friends.length>0 ?'bg-[#000000]' :'bg-[#2B0821]'} `}>
               {/* {Array.from({ length: 5 }, (e, _) => (
                 <FriendsBox
               
@@ -703,7 +703,7 @@ const Likes = (props:IPerepiski)=> {
               </div>
               <div className="text-[#DDDDDD] text-[14px]">Полученные лайки</div>
             </div>
-            <div className="w-full aspect-square flex flex-col gap-[10px] overflow-y-auto bg-[#000000]">
+           <div className={`w-full aspect-square flex flex-col gap-[10px] ${info && info.random_friends.length==0?'items-center justify-center':''} overflow-y-auto ${info && info.random_friends.length>0 ?'bg-[#000000]' :'bg-[#2B0821]'} `}>
               {/* {Array.from({ length: 5 }, (e, _) => (
                 <LikeBox
               count={4}
@@ -969,7 +969,7 @@ const OutComments = (props:IPerepiski)=> {
               </div>
               <div className="text-[#DDDDDD] text-[14px]">Отправленные комментарии</div>
             </div>
-            <div className="w-full aspect-square flex flex-col gap-[10px] overflow-y-auto bg-[#000000]">
+         <div className={`w-full aspect-square flex flex-col gap-[10px] ${info && info.random_friends.length==0?'items-center justify-center':''} overflow-y-auto ${info && info.top_commenters.length>0 ?'bg-[#000000]' :'bg-[#2B0821]'} `}>
               {/* {Array.from({ length: 5 }, (e, _) => (
                 <LikeBox
               count={4}
