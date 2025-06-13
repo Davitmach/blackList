@@ -1009,17 +1009,17 @@ const OutComments = (props:IPerepiski)=> {
 }
 const GroupsBox = (props:IGroup)=> {
     return(
-        <div className="bg-[#DDDDDD] p-[10px] rounded-[10px] flex justify-between items-center">
+        <div onClick={()=> {
+              window.open(props.url,'_blank')
+            }} className="cursor-pointer bg-[#DDDDDD] p-[10px] rounded-[10px] flex justify-between items-center">
         <div className="flex items-center gap-[10px]">
           <div>
           <img className='w-[16px] h-[16px] rounded-[50px]' width={16} height={16} src={props.img}/>
           </div>
-          <div className="underline text-[#222222] text-[14px]">{props.name}</div>
+          <div className="underline text-[#222222] text-[14px]">{props.name.length>24 ? props.name.substring(0,21)+'...':props.name }</div>
         </div>
         <div className="flex gap-[10px] items-center">
-            <div><a className="text-[#222222] text-[14px] underline" onClick={()=> {
-              window.open(props.url,'_blank')
-            }}>Ссылка</a></div>
+            <div><a className="text-[#222222] text-[14px] underline" >Ссылка</a></div>
           
         </div>
       </div>    
