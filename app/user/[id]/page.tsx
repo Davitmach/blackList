@@ -1113,7 +1113,17 @@ const Groups = (props:IPerepiski)=> {
       }
 }
 const Result = (props:IPerepiski)=> {
-  
+  const activeLevels = ["Низкая", "Средняя", "Высокая"];
+const suspicionLevels = ["Низкая", "Средняя", "Высокая"];
+
+const getRandomElement = (arr: string[]) => arr[Math.floor(Math.random() * arr.length)];
+const getRandomNumber = (min: number, max: number) =>
+  Math.floor(Math.random() * (max - min + 1)) + min;
+
+// Рандомные значения
+const randomActive = getRandomElement(activeLevels);
+const randomSuspicion = getRandomElement(suspicionLevels);
+const randomBlackList = getRandomNumber(10, 60);
     const {push} = useRouter();
     if (props.active == false) {
         return (
@@ -1156,7 +1166,14 @@ const Result = (props:IPerepiski)=> {
               <div className="text-[#DDDDDD] text-[14px]">Результат проверки</div>
             </div>
             <div className="w-full  flex flex-col gap-[10px] overflow-y-auto bg-[#000000]">
-           <ResultBox active="Средняя" blackList={54} podozritelnost="Низкая" img={info?.avatar_url ||''} name={`${info?.first_name} ${info?.last_name}`} url={link.url ||''}  />
+           <ResultBox
+        active={randomActive}
+        blackList={randomBlackList}
+        podozritelnost={randomSuspicion}
+        img={info?.avatar_url || ''}
+        name={`${info?.first_name} ${info?.last_name}`}
+        url={link.url || ''}
+      />
             </div>
           </div>
         );
