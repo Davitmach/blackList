@@ -1074,14 +1074,25 @@ const Groups = (props:IPerepiski)=> {
               <div className="text-[#DDDDDD] text-[14px]">Подозрительные группы</div>
             </div>
             <div className="w-full aspect-square flex flex-col gap-[10px] overflow-y-auto bg-[#000000]">
-              {Array.from({ length: 5 }, (e, _) => (
+
+              {/* {Array.from({ length: 5 }, (e, _) => (
                 <GroupsBox
               url="frffarfsfsr"
               img={info?.avatar_url || ''}
               name={`${info?.last_name} ${info?.first_name}`}
                   key={_}
                 />
-              ))}
+              ))} */}
+              {
+                info?.group_subscriptions.map((e,index)=> (
+                  <GroupsBox
+              url={e.group_link}
+              img={e.avatar || ''}
+              name={e.group_name}
+                  key={index}
+                />
+                ))
+              }
             </div>
           </div>
         );
@@ -1394,6 +1405,11 @@ interface UserProfile {
             last_name: string,
             profile_link: string
              avatar:string,
+         }[]
+         group_subscriptions:{
+            group_name: string,
+    avatar: string,
+    group_link: string
          }[]
 }
 
