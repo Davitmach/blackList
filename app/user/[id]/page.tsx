@@ -1075,7 +1075,7 @@ const Groups = (props:IPerepiski)=> {
               </div>
               <div className="text-[#DDDDDD] text-[14px]">Подозрительные группы</div>
             </div>
-            <div className={`w-full aspect-square flex flex-col gap-[10px] ${info && info.group_subscriptions.length==0?'items-center justify-center':''} overflow-y-auto ${info && info.top_commenters.length>0 ?'bg-[#000000]' :'bg-[#2B0821]'} `}>
+            <div className={`w-full aspect-square flex flex-col gap-[10px] ${info && info.group_subscriptions.length==0?'items-center justify-center':''} overflow-y-auto ${info && info.group_subscriptions.length>0 ?'bg-[#000000]' :'bg-[#2B0821]'} `}>
 
               {/* {Array.from({ length: 5 }, (e, _) => (
                 <GroupsBox
