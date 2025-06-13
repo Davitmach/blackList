@@ -549,7 +549,7 @@ const Aktivonst = (props:IPerepiski)=> {
 }
 const FriendsBox = (props:IBox)=> {
     return(
-        <div className="bg-[#DDDDDD] p-[10px] rounded-[10px] flex justify-between items-center">
+        <div className="cursor-pointer bg-[#DDDDDD] p-[10px] rounded-[10px] flex justify-between items-center">
         <div className="flex items-center gap-[10px]">
           <div>
           <img className='w-[16px] h-[16px] rounded-[50px]' width={16} height={16} src={props.img}/>
