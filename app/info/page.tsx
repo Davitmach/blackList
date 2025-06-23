@@ -44,6 +44,7 @@ export default function Info() {
                 <div onClick={() => HandleOpen('https://blacklistone.ru//docx/dogovor.docx')} className="cursor-pointer underline text-[#DDDDDD] font-[500] text-[14px] bg-[#8E237333] rounded-[10px] p-[10px] inline-flex">Договор оферты</div>
                 <div onClick={() => HandleOpen('https://blacklistone.ru//docx/sokhranenie.docx')} className="cursor-pointer underline text-[#DDDDDD] font-[500] text-[14px] bg-[#8E237333] rounded-[10px] p-[10px] inline-flex">Сохранение учётных данных</div>
                 <div onClick={() => HandleOpen('https://blacklistone.ru//docx/soglasie.docx')} className="cursor-pointer underline text-[#DDDDDD] font-[500] text-[14px] bg-[#8E237333] rounded-[10px] p-[10px] inline-flex">Обработка данных</div>
+            <div onClick={() => HandleOpen('https://blacklistone.ru//docx/politika_obrabotki_dannih.docx')} className="cursor-pointer underline text-[#DDDDDD] font-[500] text-[14px] bg-[#8E237333] rounded-[10px] p-[10px] inline-flex">Политика обработки данных</div>
             </div>
             <div className="flex flex-col items-center justify-center gap-[10px] mb-[110px]">
                 <div className="text-[#926C88] text-[14px]">Ваш ID аккаунта: <span className="text-white">{id}</span></div>
